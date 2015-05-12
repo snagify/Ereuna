@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Autofac;
+using Autofac.Integration.Mvc;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -18,6 +16,22 @@ namespace Ereuna.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+                        
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(BuildContainer()));
         }
+
+        private IContainer BuildContainer()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterControllers(typeof(WebApiApplication).Assembly);
+            // builder.RegisterModule<AutofacWebTypesModule>();  http://docs.autofac.org/en/latest/integration/mvc.html
+
+            // OWIN:  http://docs.autofac.org/en/latest/integration/owin.html
+
+            return builder.Build();
+        }
+
+
+        
     }
 }
