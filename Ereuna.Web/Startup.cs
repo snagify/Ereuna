@@ -8,6 +8,7 @@ using Owin;
 
 namespace Ereuna.Web
 {
+    // TODO : Do I need this?
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)

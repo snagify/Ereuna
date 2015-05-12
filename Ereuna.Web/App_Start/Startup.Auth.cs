@@ -13,6 +13,7 @@ using Ereuna.Web.Models;
 
 namespace Ereuna.Web
 {
+    // TODO : Do I need this?
     public partial class Startup
     {
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
