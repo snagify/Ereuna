@@ -24,6 +24,7 @@ namespace Ereuna.Web
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(EreunaWebApplication).Assembly);
+
             // builder.RegisterModule<AutofacWebTypesModule>();  http://docs.autofac.org/en/latest/integration/mvc.html
 
             // OWIN:  http://docs.autofac.org/en/latest/integration/owin.html

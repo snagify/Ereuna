@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Ereuna.Web.Global" Language="C#" %>
+﻿<%@ Application Codebehind="EreunaWebApplication.asax.cs" Inherits="Ereuna.Web.EreunaWebApplication" Language="C#" %>
