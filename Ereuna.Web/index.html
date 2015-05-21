@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ereuna</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script src="~/Scripts/facebook.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/modernizr-2.6.2.js"></script>
+    <script src="/Scripts/facebook.js"></script>
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -29,11 +29,37 @@
         </div>
     </div>
 
-    <div class="container body-content">
+    <div class="container body-content" style="margin-top:20px;">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="col-md-8">
+                    <h2>Login</h2>
+                    <p>Currently you can only login one way. Sorry. (not really)</p>
+                    <div>
+                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                        </fb:login-button>
+                        <div id="status">
+                        </div>
+                    </div>
+                </div>
 
-        <footer>
-            <p>&copy; 2015 Snagtastic Solutions</p>
-        </footer>
+
+                <div class="col-md-4">
+                    <div style="border: #555 1px solid; border-radius: 10px;">
+                        <div class="text-center">Recent Activity</div>
+                    </div>
+                    <div style="margin-top: 10px">
+                        <dl class="dl-horizontal">
+                            <dt>20 May 2015</dt>
+                            <dd>Added login for Facebook</dd>
+                            <dt>21 May 2015</dt>
+                            <dd>Started playing around with Bootstrap</dd>
+                            <dd>I wish I was a devsigner...</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
