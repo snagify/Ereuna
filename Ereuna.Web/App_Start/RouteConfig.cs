@@ -9,12 +9,6 @@ namespace Ereuna.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}",
-                defaults: new { controller = "Default", action = "Index" }
-            );
-
             //routes.MapRoute(
             //    name: "Default",
             //    url: "{controller}/{action}/{id}",
