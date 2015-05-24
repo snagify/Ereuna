@@ -7,9 +7,11 @@
     <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="/Scripts/modernizr-2.6.2.js"></script>
-    <script src="/Scripts/facebook.js"></script>
     <script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
+
+    <script src="/Scripts/facebook.js"></script>
+    <script src="/Scripts/Activity.js"></script>
 </head>
 <body>
 
@@ -57,10 +59,22 @@
                             <dd>I wish I was a devsigner...</dd>
                         </dl>
                     </div>
+
+                    <div style="margin-top: 10px">
+                        <dl class="dl-horizontal" id="recentActivityList">
+                        </dl>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+<script>
+
+    $(document).ready(function () {
+        activityModule.getLatestActivities(activityModule.formatActivityAsList);
+    });
+
+</script>
 </body>
 </html>
