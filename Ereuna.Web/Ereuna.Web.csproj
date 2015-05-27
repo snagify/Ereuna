@@ -139,18 +139,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Data\ApplicationActivity.cs" />
     <Compile Include="Data\EreunaContext.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505241038396_InitialCreate.cs" />
-    <Compile Include="Migrations\201505241038396_InitialCreate.Designer.cs">
-      <DependentUpon>201505241038396_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201505251214420_InitialSchema.cs" />
+    <Compile Include="Migrations\201505251214420_InitialSchema.Designer.cs">
+      <DependentUpon>201505251214420_InitialSchema.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\FacebookLoginToken.cs" />
     <Compile Include="Modules\DataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -169,8 +172,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505241038396_InitialCreate.resx">
-      <DependentUpon>201505241038396_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505251214420_InitialSchema.resx">
+      <DependentUpon>201505251214420_InitialSchema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

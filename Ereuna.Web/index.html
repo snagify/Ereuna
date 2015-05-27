@@ -10,28 +10,32 @@
     <script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
 
+    <!--<script src="//connect.facebook.net/en_US/sdk.js"></script>-->
+
     <script src="/Scripts/facebook.js"></script>
     <script src="/Scripts/Activity.js"></script>
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand">EREUNA</div>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">EREUNA</div>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav"></ul>
         </div>
     </div>
+</div>
 
-    <div class="container body-content" style="margin-top:20px;">
+    <div id="fb-root"></div>
+
+<div class="container body-content" style="margin-top:20px;">
         <div class="container-fluid">
             <div class="row-fluid">
                 <div class="col-md-8">
@@ -50,16 +54,6 @@
                     <div style="border: #555 1px solid; border-radius: 10px;">
                         <div class="text-center">Recent Activity</div>
                     </div>
-                    <div style="margin-top: 10px">
-                        <dl class="dl-horizontal">
-                            <dt>20 May 2015</dt>
-                            <dd>Added login for Facebook</dd>
-                            <dt>21 May 2015</dt>
-                            <dd>Started playing around with Bootstrap</dd>
-                            <dd>I wish I was a devsigner...</dd>
-                        </dl>
-                    </div>
-
                     <div style="margin-top: 10px">
                         <dl class="dl-horizontal" id="recentActivityList">
                         </dl>

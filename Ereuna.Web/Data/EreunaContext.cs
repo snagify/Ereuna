@@ -6,6 +6,8 @@ namespace Ereuna.Web.Data
     {
         public DbSet<User> Users { get; set; }
 
+        public DbSet<UserType> UserTypes { get; set; }
+
         public DbSet<ApplicationActivity> ApplicationActivities { get; set; }
     }
 }

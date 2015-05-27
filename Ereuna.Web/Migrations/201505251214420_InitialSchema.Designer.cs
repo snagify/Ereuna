@@ -7,13 +7,13 @@ namespace Ereuna.Web.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class InitialSchema : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialSchema));
         
         string IMigrationMetadata.Id
         {
-            get { return "201505241038396_InitialCreate"; }
+            get { return "201505251214420_InitialSchema"; }
         }
         
         string IMigrationMetadata.Source

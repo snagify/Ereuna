@@ -27,6 +27,15 @@ namespace Ereuna.Web.Migrations
             };
 
             context.ApplicationActivities.AddOrUpdate(activities.ToArray());
+
+
+            var userTypes = new List<UserType>
+            {
+                new UserType { Id = 1, Title = "Facebook User" },
+                new UserType { Id = 2, Title = "Email User" }
+            };
+            context.UserTypes.AddOrUpdate(userTypes.ToArray());
+            
             context.SaveChanges();
         }
     }

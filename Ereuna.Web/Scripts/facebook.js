@@ -7,20 +7,19 @@
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-
-var facebookModule = (function (FB, $) {
+var facebookModule = (function ($) {
 
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
     var testApi = function() {
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function (response) {
+        window.FB.api('/me', function (response) {
             console.log('Successful login for: ' + response.name);
             document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
         });
-    }
+    };
 
-    var statusChangeCallback = function(response) {
+    var statusChangeCallback = function (response) {
         console.log('statusChangeCallback');
         console.log(response);
         if (response.status === 'connected') {
@@ -32,41 +31,32 @@ var facebookModule = (function (FB, $) {
         }
     };
 
-    var checkLoginState = function() {
-        FB.getLoginStatus(function(response) {
+    var checkLoginState = function () {
+        window.FB.getLoginStatus(function (response) {
             statusChangeCallback(response);
         });
     };
 
-    var facebookInit = function() {
-        FB.init({
+    var facebookInit = function () {
+        window.FB.init({
             appId: '923459464377126',
-            cookie: true,  // enable cookies to allow the server to access
-            // the session
+            cookie: true,  // enable cookies to allow the server to access the session
             xfbml: true,  // parse social plugins on this page
             version: 'v2.3' // use version 2.2
         });
     };
 
-    var getLoginStatus = function() {
-        FB.getLoginStatus(function (response) {
-            statusChangeCallback(response);
-        });
-    };
 
     return {
         facebookInit: facebookInit,
-        checkLoginState: checkLoginState,
-        getLoginStatus: getLoginStatus
+        checkLoginState: checkLoginState
     };
 
-})();
+})($);
 
 
 window.fbAsyncInit = function () {
     facebookModule.facebookInit();
-    facebookModule.getLoginStatus();
+    facebookModule.checkLoginState();
 };
-
-
 
