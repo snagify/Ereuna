@@ -118,16 +118,24 @@
     <Content Include="App_Data\Ereuna.Web.Data.EreunaContext_log.ldf">
       <DependentUpon>Ereuna.Web.Data.EreunaContext.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\ajax\ajax_loader_blue_128.gif" />
+    <Content Include="Content\ajax\ajax_loader_blue_256.gif" />
+    <Content Include="Content\ajax\ajax_loader_blue_32.gif" />
+    <Content Include="Content\ajax\ajax_loader_blue_350.gif" />
+    <Content Include="Content\ajax\ajax_loader_blue_48.gif" />
+    <Content Include="Content\ajax\ajax_loader_blue_512.gif" />
+    <Content Include="Content\ajax\ajax_loader_blue_64.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
-    <Content Include="Scripts\Activity.js" />
+    <Content Include="Scripts\ActivityController.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AngularBootstrap.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

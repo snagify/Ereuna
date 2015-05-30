@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app>
+<html ng-app="ereuna">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,9 @@
     <script src="/Scripts/angular.js"></script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>-->
     <script src="/Scripts/facebook.js"></script>
-    <script src="/Scripts/Activity.js"></script>
+
+    <script src="/Scripts/AngularBootstrap.js"></script>
+    <script src="/Scripts/ActivityController.js"></script>
 </head>
 <body>
 
@@ -47,21 +49,27 @@
                         </div>
                     </div>
 
-                    <div id="angularPlaypen">
-                        <input type="text" ng-model="yourName" placeholder="Enter a name here">
-                        <h1>Hello, {{ yourName }}!</h1>
-                    </div>
                 </div>
 
 
                 <div class="col-md-4">
-                    <div style="border: #555 1px solid; border-radius: 10px;">
-                        <div class="text-center">Recent Activity</div>
+
+                    <div style="border: #555 1px solid; border-radius: 10px; align-content: center;">
+                        <div class="text-center">Recent Activity NG</div>
                     </div>
-                    <div style="margin-top: 10px">
-                        <dl class="dl-horizontal" id="recentActivityList">
-                        </dl>
+                    <div style="margin-top: 10px; align-content: center;" ng-controller="ActivityController">
+                        <div class="dl-horizontal" ng-show="!loading">
+
+                            <dl ng-repeat="item in recentActivity" style="margin-bottom: 10px; margin-top: 10px;">
+                                <dt>{{item.Occurred | date:'yyyy-MM-dd hh:mm a'}}</dt>
+                                <dd>{{item.Title}}</dd>
+                            </dl>
+                        </div>
+                        <div ng-show="loading" style="align-content: center;text-align:center">
+                            <img src="Content/ajax/ajax_loader_blue_48.gif" alt="Loading recent activity" />
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -69,8 +77,8 @@
 
 <script>
 
-    $(document).ready(function() {
-        activityModule.getLatestActivities(activityModule.formatActivityAsList);
+    $(document).ready(function () {
+
     });
 
 </script>
