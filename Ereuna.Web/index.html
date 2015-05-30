@@ -9,79 +9,108 @@
     <script src="/Scripts/modernizr-2.6.2.js"></script>
     <script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
+
     <script src="/Scripts/angular.js"></script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>-->
-    <script src="/Scripts/facebook.js"></script>
+    <script src="/Scripts/ngFacebook.js"></script>
 
     <script src="/Scripts/AngularBootstrap.js"></script>
+    <script src="/Scripts/LoginController.js"></script>
     <script src="/Scripts/ActivityController.js"></script>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>-->
+    
+    
 </head>
 <body>
+    <div>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="navbar-brand">EREUNA</div>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav"></ul>
-        </div>
-    </div>
-</div>
-
-    <div id="fb-root"></div>
-
-<div class="container body-content" style="margin-top:20px;">
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="col-md-8">
-                    <h2>Login</h2>
-                    <p>Currently you can only login one way. Sorry. (not really)</p>
-                    <div id="loginSection">
-                        <fb:login-button scope="public_profile,email" onlogin="facebookModule.checkLoginState();">
-                        </fb:login-button>
-                        <div id="status">
-                        </div>
-                    </div>
-
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand">EREUNA</div>
                 </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="fb-root"></div>
+
+        <div class="container body-content" style="margin-top: 20px;">
+
+            <div class="container-fluid">
+                <div class="row-fluid">
 
 
-                <div class="col-md-4">
+                    <div class="col-md-8">
+                        <h2>Login</h2>
+                        
+                        <div ng-controller="LoginController">
+                            <div ng-show="!loading">
+                                <div ng-show="!IsLoggedIn">
+                                    <span>Please login with your Facebook account.</span>
+                                    <button ng-click="DoFacebookLogin()">
+                                        <span>Login</span>
+                                    </button>
+                                </div>
 
-                    <div style="border: #555 1px solid; border-radius: 10px; align-content: center;">
-                        <div class="text-center">Recent Activity NG</div>
+                                <div ng-show="IsLoggedIn">
+                                    <span>
+                                        You are logged in. <br />
+                                        Welcome back {{ userFullName }}
+                                    </span>
+                                    <button id="login-btn" ng-click="DoFacebookLogout()">
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div ng-show="loading" style="align-content: center; text-align: center">
+                                <img src="Content/ajax/ajax_loader_blue_128.gif" alt="Loading login details" />
+                            </div>
+                        </div>
+
                     </div>
-                    <div style="margin-top: 10px; align-content: center;" ng-controller="ActivityController">
-                        <div class="dl-horizontal" ng-show="!loading">
 
-                            <dl ng-repeat="item in recentActivity" style="margin-bottom: 10px; margin-top: 10px;">
-                                <dt>{{item.Occurred | date:'yyyy-MM-dd hh:mm a'}}</dt>
-                                <dd>{{item.Title}}</dd>
-                            </dl>
+
+                    <div class="col-md-4">
+
+                        <div style="border: #555 1px solid; border-radius: 10px; align-content: center;">
+                            <div class="text-center">Recent Activity NG</div>
                         </div>
-                        <div ng-show="loading" style="align-content: center;text-align:center">
-                            <img src="Content/ajax/ajax_loader_blue_48.gif" alt="Loading recent activity" />
+                        <div style="margin-top: 10px; align-content: center;" ng-controller="ActivityController">
+                            <div class="dl-horizontal" ng-show="!loading">
+
+                                <dl ng-repeat="item in recentActivity" style="margin-bottom: 10px; margin-top: 10px;">
+                                    <dt>{{item.Occurred | date:'yyyy-MM-dd hh:mm a'}}</dt>
+                                    <dd>{{item.Title}}</dd>
+                                </dl>
+                            </div>
+                            <div ng-show="loading" style="align-content: center; text-align: center">
+                                <img src="Content/ajax/ajax_loader_blue_48.gif" alt="Loading recent activity" />
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
             </div>
         </div>
+
+        <script>
+
+            $(document).ready(function () {
+
+            });
+
+        </script>
+
     </div>
-
-<script>
-
-    $(document).ready(function () {
-
-    });
-
-</script>
-
 </body>
 </html>
