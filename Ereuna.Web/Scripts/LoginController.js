@@ -1,47 +1,10 @@
-﻿app.controller('LoginController', function ($rootScope, $scope, $http, $facebook) {
+﻿// http://ngmodules.org/modules/ngFacebook
+
+app.controller('LoginController', function ($rootScope, $scope, $http, $facebook) {
+    var endpoint = 'api/login';
 
     $scope.loading = true;
-
-    //function InitialiseFacebook() {
-    //    window.FB.init({
-    //        appId: '923459464377126',
-    //        cookie: true, // enable cookies to allow the server to access the session
-    //        xfbml: true, // parse social plugins on this page
-    //        version: 'v2.3' // use version 2.2
-    //    });
-    //};
-
-    //function CheckFacebookLoginStatus() {
-    //    window.FB.getLoginStatus(function (response) {
-    //        console.log('Facebook login response: ' + response);
-    //        if (response.status === 'connected') {
-    //            $rootScope.IsLoggedIn = true;
-    //            $rootScope.LoginType = 'FB';
-
-    //            window.FB.api('/me', function (response) {
-    //                console.log('User info: ' + response);
-    //                $rootScope.userFullName = response.name;
-    //            });
-
-    //        } else if (response.status === 'not_authorized') {
-    //            $rootScope.IsLoggedIn = false;
-    //        } else {
-    //            Console.log('Unexpected response from Facebook API');
-    //            $rootScope.IsLoggedIn = false;
-    //        }
-    //        $scope.loading = false;
-    //    });
-    //};
-
-    //$scope.DoFacebookLogin = function() {
-    //    CheckFacebookLoginStatus();
-    //};
     
-    //window.fbAsyncInit = function () {
-    //    InitialiseFacebook();
-    //    CheckFacebookLoginStatus();
-    //};
-
     $scope.DoFacebookLogin = function() {
         $facebook.login();
     };
@@ -50,6 +13,37 @@
         $facebook.logout();
     };
 
+    $scope.DoFacebookDeauthentication = function () {
+        var url = '/me/permissions';
+        $facebook.api(url, 'DELETE').then(function (response) {
+            console.log(response);
+            if (response) {
+                $rootScope.userFullName = '';
+                $rootScope.LoginType = 'None';
+                $rootScope.IsLoggedIn = false;
+            }
+        });
+    };
+
+    function LoginToServer(user) {
+        var response = $facebook.getAuthResponse();
+        $http.post(endpoint, response).success(function (data, status, headers, config) {
+            console.log(data);
+            console.log(status);
+            console.log(headers);
+            console.log(config);
+
+            
+
+            // data contains the response
+            // status is the HTTP status
+            // headers is the header getter function
+            // config is the object that was used to create the HTTP request
+        }).error(function (data, status, headers, config) {
+            
+        });
+    }
+
     $scope.$on('fb.auth.authResponseChange', function () {
         $rootScope.IsLoggedIn = $facebook.isConnected();
         if ($rootScope.IsLoggedIn) {
@@ -57,6 +51,8 @@
 
             $facebook.api('/me').then(function (user) {
                 $rootScope.userFullName = user.name;
+
+                LoginToServer(user);
             });
         }
     });

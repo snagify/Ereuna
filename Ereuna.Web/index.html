@@ -39,9 +39,7 @@
                 </div>
             </div>
         </div>
-
-        <div id="fb-root"></div>
-
+        
         <div class="container body-content" style="margin-top: 20px;">
 
             <div class="container-fluid">
@@ -55,9 +53,10 @@
                             <div ng-show="!loading">
                                 <div ng-show="!IsLoggedIn">
                                     <span>Please login with your Facebook account.</span>
-                                    <button ng-click="DoFacebookLogin()">
+                                    <button ng-click="DoFacebookLogin()" class="fb-login-button">
                                         <span>Login</span>
                                     </button>
+                                    
                                 </div>
 
                                 <div ng-show="IsLoggedIn">
@@ -65,9 +64,15 @@
                                         You are logged in. <br />
                                         Welcome back {{ userFullName }}
                                     </span>
+                                    
                                     <button id="login-btn" ng-click="DoFacebookLogout()">
                                         <span>Logout</span>
                                     </button>
+
+                                    <button id="deauth-btn" ng-click="DoFacebookDeauthentication()">
+                                        <span>Deauthorise</span>
+                                    </button>
+
                                 </div>
                             </div>
 
