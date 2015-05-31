@@ -6,7 +6,7 @@
 
         public int UserId { get; set; } 
 
-        public int FacebookUserId { get; set; }
+        public string FacebookUserId { get; set; }
 
         public string LastFacebookToken { get; set; }
 

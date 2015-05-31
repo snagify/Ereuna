@@ -114,9 +114,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Ereuna.Web.Data.EreunaContext.mdf" />
-    <Content Include="App_Data\Ereuna.Web.Data.EreunaContext_log.ldf">
-      <DependentUpon>Ereuna.Web.Data.EreunaContext.mdf</DependentUpon>
+    <Content Include="App_Data\Ereuna.mdf" />
+    <Content Include="App_Data\Ereuna_log.ldf">
+      <DependentUpon>Ereuna.mdf</DependentUpon>
     </Content>
     <Content Include="Content\ajax\ajax_loader_blue_128.gif" />
     <Content Include="Content\ajax\ajax_loader_blue_256.gif" />
@@ -160,9 +160,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505251214420_InitialSchema.cs" />
-    <Compile Include="Migrations\201505251214420_InitialSchema.Designer.cs">
-      <DependentUpon>201505251214420_InitialSchema.cs</DependentUpon>
+    <Compile Include="Migrations\201505310315089_Initial.cs" />
+    <Compile Include="Migrations\201505310315089_Initial.Designer.cs">
+      <DependentUpon>201505310315089_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -184,9 +184,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505251214420_InitialSchema.resx">
-      <DependentUpon>201505251214420_InitialSchema.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505310315089_Initial.resx">
+      <DependentUpon>201505310315089_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

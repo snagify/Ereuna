@@ -17,13 +17,35 @@ namespace Ereuna.Web.Controllers
 
         [HttpPost] public IHttpActionResult Post([FromBody] FacebookAccessToken token)
         {
-            //_context.Users.FirstOrDefault(x => x.FacebookUserId == token.UserId);
+            var existingUser =_context.Users.FirstOrDefault(x => x.FacebookUserId == token.UserId);
 
+            if (existingUser != null)
+            {
+                existingUser.LastFacebookToken = existingUser.Token;
+                existingUser.Token = token.AccessToken;
+            }
+            else
+            {
+                var newUser = new Data.User
+                {
+                    UserType = _context.UserTypes.FirstOrDefault(x => x.Id == UserType.FacebookUser),
+                    FacebookUserId = token.UserId,
+                    Email = token.Email,
+                    First = token.FirstName,
+                    Last = token.LastName,
+                    IsEmailVerified = true,
+                    Token = token.AccessToken
+                };
 
-            //_context.Users.Where(x => x.UserId)
+                _context.Users.Add(newUser);
+            }
+            
+            _context.SaveChanges();
 
             return Ok();
         }
+
+        
 
     }
 }

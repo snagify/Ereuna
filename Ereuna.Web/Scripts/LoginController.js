@@ -27,13 +27,20 @@ app.controller('LoginController', function ($rootScope, $scope, $http, $facebook
 
     function LoginToServer(user) {
         var response = $facebook.getAuthResponse();
-        $http.post(endpoint, response).success(function (data, status, headers, config) {
+        var token = {
+            UserId: response.userID,
+            AccessToken: response.accessToken,
+            ExpiresIn: response.expiresIn,
+            SignedRequest: response.signedRequest,
+            Email: user.email,
+            FirstName: user.first_name,
+            LastName: user.last_name
+        };
+        $http.post(endpoint, token).success(function (data, status, headers, config) {
             console.log(data);
             console.log(status);
             console.log(headers);
             console.log(config);
-
-            
 
             // data contains the response
             // status is the HTTP status

@@ -3,7 +3,7 @@ namespace Ereuna.Web.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialSchema : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -23,7 +23,7 @@ namespace Ereuna.Web.Migrations
                 c => new
                     {
                         UserId = c.Int(nullable: false, identity: true),
-                        FacebookUserId = c.Int(nullable: false),
+                        FacebookUserId = c.String(),
                         LastFacebookToken = c.String(),
                         Token = c.String(),
                         First = c.String(),
