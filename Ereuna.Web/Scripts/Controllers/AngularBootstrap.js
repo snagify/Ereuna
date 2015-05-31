@@ -1,11 +1,14 @@
-﻿var app = angular.module('ereuna', ['ngFacebook', 'ui.router'])
+﻿var app = angular.module('ereuna', ['ngFacebook', 'ui.bootstrap', 'ui.router'])
     .config(['$facebookProvider', function ($facebookProvider) {
         $facebookProvider.setAppId('923459464377126').setPermissions(['email', 'public_profile']);
     }])
-    .run(['$rootScope', '$window', function($rootScope, $window) {
+    .run(['$rootScope', '$window', '$state', '$stateParams', function ($rootScope, $window, $state, $stateParams) {
         $rootScope.userFullName = '';
         $rootScope.IsLoggedIn = false;
         $rootScope.LoginType = 'None';
+
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
 
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -39,7 +42,25 @@ function configRoutes($stateProvider, $urlRouterProvider) {
             abstract: true,
             url: '/projects/:projectId',
             templateUrl: 'partials/project.html',
-            controller: 'ProjectController',
+            controller: function ($scope, $http, $state, $stateParams) {
+                var vm = this;
+
+                vm.projectId = $state.projectId;
+                vm.tabs = [
+                    { text: 'Overview', state: 'project.overview' },
+                    { text: 'World', state: 'project.world' },
+                    { text: 'Characters', state: 'project.characters' }
+                ];
+
+                activate();
+
+                function activate() {
+                    for (var i = 0; i < vm.tabs.length; i++) {
+                        var tab = vm.tabs[i];
+                        tab.active = ($state.$current.name === tab.state);
+                    }
+                };
+            },
             controllerAs: 'vm'
         })
         .state('project.overview', {
@@ -64,7 +85,3 @@ function configRoutes($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
 }
-
-app.run(['$state', function ($state) {
-
-}]);

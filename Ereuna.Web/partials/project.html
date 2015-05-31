@@ -1,3 +1,8 @@
-﻿<h1>Your Project </h1>
+﻿<div>
+    <h1>Project</h1>
+    <tabset>
+        <tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}" ui-sref="{{tab.state}}" active="tab.active"></tab>
+    </tabset>
+</div>
 
-<div ui-view></div>
+<div ui-view id="tabContent" class="container admin-content"></div>
