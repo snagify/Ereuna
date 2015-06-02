@@ -6,9 +6,12 @@
         $rootScope.userFullName = '';
         $rootScope.IsLoggedIn = false;
         $rootScope.LoginType = 'None';
+        $rootScope.HasProjects = false;
+        $rootScope.Projects = [];
 
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+        
 
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];

@@ -1,8 +1,26 @@
 ﻿<div>
-    <h1>Project</h1>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar">Foo</span>
+                    <span class="icon-bar">Bar</span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand">EREUNA</div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"></ul>
+            </div>
+        </div>
+    </div>
+
     <tabset>
         <tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}" ui-sref="{{tab.state}}" active="tab.active"></tab>
     </tabset>
-</div>
 
-<div ui-view id="tabContent" class="container admin-content"></div>
+
+    <div ui-view id="tabContent" class="container admin-content"></div>
+
+</div>

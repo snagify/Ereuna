@@ -25,6 +25,16 @@ app.controller('LoginController', function ($rootScope, $scope, $http, $facebook
         });
     };
 
+
+    function FakeProjects() {
+        var p = [
+            { Id: 1, Name: 'Dancing with the Dead', Type: 'Books' },
+            { Id: 2, Name: 'Salmon Man', Type: 'Comics' },
+            { Id: 3, Name: 'Dude: Wheres My Car - The Stage Show', Type: 'Scripts' }
+        ];
+        return p;
+    }
+
     function LoginToServer(user) {
         var response = $facebook.getAuthResponse();
         var token = {
@@ -42,6 +52,10 @@ app.controller('LoginController', function ($rootScope, $scope, $http, $facebook
             console.log(headers);
             console.log(config);
 
+            // TODO: Remove this, it's just for testing
+            $rootScope.HasProjects = true;
+            $rootScope.Projects = FakeProjects();
+
             // data contains the response
             // status is the HTTP status
             // headers is the header getter function
@@ -50,6 +64,7 @@ app.controller('LoginController', function ($rootScope, $scope, $http, $facebook
             
         });
     }
+
 
     $scope.$on('fb.auth.authResponseChange', function () {
         $rootScope.IsLoggedIn = $facebook.isConnected();

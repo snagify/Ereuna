@@ -131,7 +131,6 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="index2.html" />
     <Content Include="index.html" />
     <Content Include="partials\project-characters.html" />
     <Content Include="partials\project.html" />

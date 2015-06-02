@@ -14,7 +14,6 @@ namespace Ereuna.Web.Controllers
             _context = context;
         }
 
-
         [HttpPost] public IHttpActionResult Post([FromBody] FacebookAccessToken token)
         {
             var existingUser =_context.Users.FirstOrDefault(x => x.FacebookUserId == token.UserId);
