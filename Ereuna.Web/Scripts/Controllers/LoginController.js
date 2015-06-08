@@ -1,6 +1,6 @@
 ﻿// http://ngmodules.org/modules/ngFacebook
 
-app.controller('LoginController', function ($rootScope, $scope, $http, $facebook) {
+app.controller('LoginController', function ($rootScope, $scope, $http, $facebook, $window) {
     var endpoint = 'api/login';
 
     $scope.loading = true;
@@ -53,10 +53,20 @@ app.controller('LoginController', function ($rootScope, $scope, $http, $facebook
             console.log(config);
             
             $rootScope.SessionToken = data;
+            $window.sessionStorage.token = data;
 
             // TODO: Remove this, it's just for testing
             $rootScope.HasProjects = true;
-            $rootScope.Projects = FakeProjects();
+            //$rootScope.Projects = FakeProjects();
+
+            $http({
+                method: 'GET',
+                url: 'api/projects'
+            }).success(function (data, status) {
+                console.log(data);
+            }).error(function (data, status) {
+                console.log(status);
+            });
 
             // data contains the response
             // status is the HTTP status

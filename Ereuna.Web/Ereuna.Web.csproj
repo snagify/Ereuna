@@ -170,8 +170,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\Session\ISessionValidator.cs" />
+    <Compile Include="Common\Session\TokenAuthorizationFilterAttribute.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\SecureController.cs" />
     <Compile Include="Data\ApplicationActivity.cs" />
     <Compile Include="Data\EreunaContext.cs" />
     <Compile Include="Data\User.cs" />
@@ -188,6 +192,7 @@
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\FacebookLoginToken.cs" />
     <Compile Include="Models\FacebookUserToken.cs" />
+    <Compile Include="Models\ProjectSummary.cs" />
     <Compile Include="Modules\DataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
