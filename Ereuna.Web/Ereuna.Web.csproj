@@ -175,13 +175,14 @@
     <Compile Include="Data\ApplicationActivity.cs" />
     <Compile Include="Data\EreunaContext.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserSession.cs" />
     <Compile Include="Data\UserType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505310315089_Initial.cs" />
-    <Compile Include="Migrations\201505310315089_Initial.Designer.cs">
-      <DependentUpon>201505310315089_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201506080723232_Initial.cs" />
+    <Compile Include="Migrations\201506080723232_Initial.Designer.cs">
+      <DependentUpon>201506080723232_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -206,8 +207,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505310315089_Initial.resx">
-      <DependentUpon>201505310315089_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506080723232_Initial.resx">
+      <DependentUpon>201506080723232_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

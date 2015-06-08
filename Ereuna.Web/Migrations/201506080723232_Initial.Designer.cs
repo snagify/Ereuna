@@ -13,7 +13,7 @@ namespace Ereuna.Web.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201505310315089_Initial"; }
+            get { return "201506080723232_Initial"; }
         }
         
         string IMigrationMetadata.Source

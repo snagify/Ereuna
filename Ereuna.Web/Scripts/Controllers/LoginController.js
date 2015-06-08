@@ -51,6 +51,8 @@ app.controller('LoginController', function ($rootScope, $scope, $http, $facebook
             console.log(status);
             console.log(headers);
             console.log(config);
+            
+            $rootScope.SessionToken = data;
 
             // TODO: Remove this, it's just for testing
             $rootScope.HasProjects = true;
@@ -61,7 +63,14 @@ app.controller('LoginController', function ($rootScope, $scope, $http, $facebook
             // headers is the header getter function
             // config is the object that was used to create the HTTP request
         }).error(function (data, status, headers, config) {
-            
+            $rootScope.HasProjects = false;
+            $rootScope.IsLoggedIn = false;
+
+            console.log('Error occurred during login getting response from server');
+            console.log(data);
+            console.log(status);
+            console.log(headers);
+            console.log(config);
         });
     }
 

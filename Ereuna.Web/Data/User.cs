@@ -1,10 +1,14 @@
-﻿namespace Ereuna.Web.Data
+﻿using System.Collections.Generic;
+
+namespace Ereuna.Web.Data
 {
     public class User
     {
         public virtual UserType UserType { get; set; }
 
-        public int UserId { get; set; } 
+        public virtual List<UserSession> UserSessions { get; set; }
+
+        public int Id { get; set; } 
 
         public string FacebookUserId { get; set; }
 

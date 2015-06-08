@@ -22,7 +22,7 @@ namespace Ereuna.Web.Migrations
                 "dbo.Users",
                 c => new
                     {
-                        UserId = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         FacebookUserId = c.String(),
                         LastFacebookToken = c.String(),
                         Token = c.String(),
@@ -32,9 +32,23 @@ namespace Ereuna.Web.Migrations
                         IsEmailVerified = c.Boolean(nullable: false),
                         UserType_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.UserId)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.UserTypes", t => t.UserType_Id)
                 .Index(t => t.UserType_Id);
+            
+            CreateTable(
+                "dbo.UserSessions",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        SessionToken = c.String(),
+                        SessionStarted = c.DateTime(nullable: false),
+                        IsSessionOpen = c.Boolean(nullable: false),
+                        User_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Users", t => t.User_Id)
+                .Index(t => t.User_Id);
             
             CreateTable(
                 "dbo.UserTypes",
@@ -50,8 +64,11 @@ namespace Ereuna.Web.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Users", "UserType_Id", "dbo.UserTypes");
+            DropForeignKey("dbo.UserSessions", "User_Id", "dbo.Users");
+            DropIndex("dbo.UserSessions", new[] { "User_Id" });
             DropIndex("dbo.Users", new[] { "UserType_Id" });
             DropTable("dbo.UserTypes");
+            DropTable("dbo.UserSessions");
             DropTable("dbo.Users");
             DropTable("dbo.ApplicationActivities");
         }

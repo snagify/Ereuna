@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
@@ -28,14 +29,14 @@ namespace Ereuna.Web.Controllers
         {
             if (IsTokenValid(token.AccessToken, token.UserId))
             {
-                DoLogin(token);
-                return Ok();
+                var sessionToken = DoLogin(token);
+                return Ok(sessionToken);
             }
 
             return Unauthorized();
         }
 
-        private void DoLogin(FacebookAccessToken token)
+        private string DoLogin(FacebookAccessToken token)
         {
             var existingUser = _context.Users.FirstOrDefault(x => x.FacebookUserId == token.UserId);
 
@@ -46,7 +47,7 @@ namespace Ereuna.Web.Controllers
             }
             else
             {
-                var newUser = new Data.User
+                existingUser = new Data.User
                 {
                     UserType = _context.UserTypes.FirstOrDefault(x => x.Id == UserType.FacebookUser),
                     FacebookUserId = token.UserId,
@@ -57,10 +58,23 @@ namespace Ereuna.Web.Controllers
                     Token = token.AccessToken
                 };
 
-                _context.Users.Add(newUser);
+                _context.Users.Add(existingUser);
             }
 
+            var sessionToken = Guid.NewGuid().ToString();
+
+            var userSession = new UserSession
+            {
+                IsSessionOpen = true,
+                SessionStarted = DateTime.Now,
+                SessionToken = sessionToken,
+                User = existingUser
+            };
+            _context.UserSessions.Add(userSession);
+
             _context.SaveChanges();
+
+            return sessionToken;
         }
 
         private bool IsTokenValid(string accessToken, string userId)
