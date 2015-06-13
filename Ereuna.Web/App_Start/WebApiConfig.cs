@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+using System.Web.Http.Dispatcher;
+using Ereuna.Web.Common.Api;
 
 namespace Ereuna.Web
 {
@@ -9,7 +8,11 @@ namespace Ereuna.Web
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableSystemDiagnosticsTracing();
+
             // Web API configuration and services
+            config.Services.Replace(typeof(IHttpControllerTypeResolver), new CustomHttpControllerTypeResolver());
+            HttpControllerAmmendments.SuffixOverride("Api");
 
             // Web API routes
             config.MapHttpAttributeRoutes();

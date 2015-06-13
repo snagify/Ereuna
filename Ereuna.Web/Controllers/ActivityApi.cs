@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
+using Ereuna.Web.Common.Api;
 using Ereuna.Web.Data;
 using Ereuna.Web.Models;
 
 namespace Ereuna.Web.Controllers
 {
-    public class ActivityController : ApiController
+    public class ActivityApi : ApiEndpoint
     {
         private readonly EreunaContext _context;
 
-        public ActivityController(EreunaContext context)
+        public ActivityApi(EreunaContext context)
         {
             _context = context;
         }

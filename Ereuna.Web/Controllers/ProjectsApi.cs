@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ereuna.Web.Common.Api;
 using Ereuna.Web.Common.Session;
 using Ereuna.Web.Data;
 using Ereuna.Web.Models;
@@ -7,11 +8,11 @@ using Ereuna.Web.Models;
 namespace Ereuna.Web.Controllers
 {
     [TokenAuthorizationFilter]
-    public class ProjectsController : SecureController
+    public class ProjectsApi : SecureApiEndpoint
     {
         private readonly EreunaContext _context;
 
-        public ProjectsController(EreunaContext context)
+        public ProjectsApi(EreunaContext context)
         {
             _context = context;
         }

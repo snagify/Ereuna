@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
+using Ereuna.Web.Common.Api;
 using Ereuna.Web.Data;
 using Ereuna.Web.Models;
 using Newtonsoft.Json;
@@ -16,11 +17,11 @@ namespace Ereuna.Web.Controllers
     /// We then verify the token via facebook again; this ensures the call to the API was from our app and it is valid for that user id.
     /// We can then create a session around that user id and return a guid token for all future calls going forward (until session ends).
     /// </summary>
-    public class LoginController : ApiController
+    public class LoginApi : ApiEndpoint
     {
         private readonly EreunaContext _context;
 
-        public LoginController(EreunaContext context)
+        public LoginApi(EreunaContext context)
         {
             _context = context;
         }

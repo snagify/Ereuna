@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Text;
 using System.Threading;
+using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using Ereuna.Web.Data;
@@ -78,6 +79,8 @@ namespace Ereuna.Web.Common.Session
 
                 var principal = new GenericPrincipal(identity, (new[] { role }));
                 Thread.CurrentPrincipal = principal;
+                HttpContext.Current.User = principal;
+
                 return;
             }
 

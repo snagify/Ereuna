@@ -2,11 +2,13 @@
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Controllers;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using Ereuna.Web.Common.Api;
 using Ereuna.Web.Modules;
 
 namespace Ereuna.Web
@@ -23,15 +25,25 @@ namespace Ereuna.Web
             BuildContainer();
         }
 
+        private bool IsValidApiEndpoint(Type t)
+        {
+            return 
+                typeof (IHttpController).IsAssignableFrom(t) && 
+                typeof (ApiEndpoint) != t &&
+                typeof (SecureApiEndpoint) != t;
+        }
+
+
         private IContainer BuildContainer()
         {
             var builder = new ContainerBuilder();
             //builder.RegisterControllers(typeof(EreunaWebApplication).Assembly);
 
             var config = GlobalConfiguration.Configuration;
-            
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
+            //Cannot use the in-built builder.RegisterApiControllers because it has a hardcoded check for "Controllers" at end of files
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).Where(IsValidApiEndpoint);
+            
             builder.RegisterWebApiFilterProvider(config);
 
 
