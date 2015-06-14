@@ -5,7 +5,7 @@ using Ereuna.Web.Common.Session;
 using Ereuna.Web.Data;
 using Ereuna.Web.Models;
 
-namespace Ereuna.Web.Controllers
+namespace Ereuna.Web.Endpoints
 {
     [TokenAuthorizationFilter]
     public class ProjectsApi : SecureApiEndpoint

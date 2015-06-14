@@ -8,7 +8,7 @@ using Ereuna.Web.Data;
 using Ereuna.Web.Models;
 using Newtonsoft.Json;
 
-namespace Ereuna.Web.Controllers
+namespace Ereuna.Web.Endpoints
 {
     /// <summary>
     /// The Facebook login process is a bit complex. I'll document it here for my own sanity as well.

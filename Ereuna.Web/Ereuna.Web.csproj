@@ -179,9 +179,9 @@
     <Compile Include="Common\Api\CustomHttpControllerTypeResolver.cs" />
     <Compile Include="Common\Session\ISessionValidator.cs" />
     <Compile Include="Common\Session\TokenAuthorizationFilterAttribute.cs" />
-    <Compile Include="Controllers\ActivityApi.cs" />
-    <Compile Include="Controllers\LoginApi.cs" />
-    <Compile Include="Controllers\ProjectsApi.cs" />
+    <Compile Include="Endpoints\ActivityApi.cs" />
+    <Compile Include="Endpoints\LoginApi.cs" />
+    <Compile Include="Endpoints\ProjectsApi.cs" />
     <Compile Include="Common\Api\SecureApiEndpoint.cs" />
     <Compile Include="Data\ApplicationActivity.cs" />
     <Compile Include="Data\EreunaContext.cs" />
