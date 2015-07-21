@@ -25,16 +25,6 @@ app.controller('LoginController', function ($rootScope, $scope, $http, $facebook
         });
     };
 
-
-    function FakeProjects() {
-        var p = [
-            { Id: 1, Name: 'Dancing with the Dead', Type: 'Books' },
-            { Id: 2, Name: 'Salmon Man', Type: 'Comics' },
-            { Id: 3, Name: 'Dude: Wheres My Car - The Stage Show', Type: 'Scripts' }
-        ];
-        return p;
-    }
-
     function LoginToServer(user) {
         var response = $facebook.getAuthResponse();
         var token = {
@@ -55,15 +45,14 @@ app.controller('LoginController', function ($rootScope, $scope, $http, $facebook
             $rootScope.SessionToken = data;
             $window.sessionStorage.token = data;
 
-            // TODO: Remove this, it's just for testing
-            $rootScope.HasProjects = true;
-            //$rootScope.Projects = FakeProjects();
 
             $http({
                 method: 'GET',
                 url: 'api/projects'
             }).success(function (data, status) {
                 console.log(data);
+                $rootScope.Projects = data;
+                $rootScope.HasProjects = true;
             }).error(function (data, status) {
                 console.log(status);
             });

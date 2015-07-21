@@ -13,5 +13,11 @@ namespace Ereuna.Web.Data
         public DbSet<UserSession> UserSessions { get; set; }
 
         public DbSet<ApplicationActivity> ApplicationActivities { get; set; }
+
+        public DbSet<ProjectType> ProjectTypes { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
+
+        public DbSet<Idea> Ideas { get; set; }
     }
 }

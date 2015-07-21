@@ -179,6 +179,9 @@
     <Compile Include="Common\Api\CustomHttpControllerTypeResolver.cs" />
     <Compile Include="Common\Session\ISessionValidator.cs" />
     <Compile Include="Common\Session\TokenAuthorizationFilterAttribute.cs" />
+    <Compile Include="Data\Idea.cs" />
+    <Compile Include="Data\Project.cs" />
+    <Compile Include="Data\ProjectType.cs" />
     <Compile Include="Endpoints\ActivityApi.cs" />
     <Compile Include="Endpoints\LoginApi.cs" />
     <Compile Include="Endpoints\ProjectsApi.cs" />
@@ -191,9 +194,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506080723232_Initial.cs" />
-    <Compile Include="Migrations\201506080723232_Initial.Designer.cs">
-      <DependentUpon>201506080723232_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201506140721341_Initial.cs" />
+    <Compile Include="Migrations\201506140721341_Initial.Designer.cs">
+      <DependentUpon>201506140721341_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -219,8 +222,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506080723232_Initial.resx">
-      <DependentUpon>201506080723232_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506140721341_Initial.resx">
+      <DependentUpon>201506140721341_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -8,6 +8,8 @@ namespace Ereuna.Web.Data
 
         public virtual List<UserSession> UserSessions { get; set; }
 
+        public virtual List<Project> Projects { get; set; }
+
         public int Id { get; set; } 
 
         public string FacebookUserId { get; set; }

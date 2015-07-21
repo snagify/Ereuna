@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Ereuna.Web.Common.Api;
 using Ereuna.Web.Common.Session;
 using Ereuna.Web.Data;
@@ -16,19 +17,31 @@ namespace Ereuna.Web.Endpoints
         {
             _context = context;
         }
-
-        [TokenAuthorizationFilter]
-        public IEnumerable<ProjectSummary> GetAllProjectSummaries()
+        
+        public IEnumerable<ProjectSummary> GetAllProjects()
         {
             var id = UserId;
 
-            return new List<ProjectSummary>
-            {
-                new ProjectSummary { Id= 1, Name= "Dancing with the Dead", Type= "Books", LastUsed = DateTime.Now.AddDays(-2).AddHours(-4).AddMinutes(14), Description = "Some desc"},
-                new ProjectSummary { Id= 2, Name= "Salmon Man", Type= "Comics", LastUsed = DateTime.Now.AddDays(-1).AddHours(-13).AddMinutes(54), Description = "Some desc" },
-                new ProjectSummary { Id= 3, Name= "Dude= Wheres My Car - The Stage Show", Type= "Scripts", LastUsed = DateTime.Now.AddDays(-23).AddHours(1).AddMinutes(-14), Description = "Some desc" }
-            };
+            var projects = _context.Users.First(x => x.Id == id).Projects.Select(MapProjectToSummary);
+
+            return projects;
+            
         }
+
+        private ProjectSummary MapProjectToSummary(Project p)
+        {
+            if (p == null) return null;
+            return new ProjectSummary
+            {
+                Id = p.Id, 
+                Name = p.Name,
+                Description = p.Description,
+                Type = p.ProjectType.Title,
+                LastUsed = p.LastUsed
+            };
+
+        }
+
 
     }
 }

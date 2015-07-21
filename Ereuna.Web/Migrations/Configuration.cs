@@ -26,17 +26,24 @@ namespace Ereuna.Web.Migrations
                 new ApplicationActivity { Id = 2, Occurred = DateTime.Now.AddDays(-1).AddMinutes(-10), Title = "Started playing around with Bootstrap", Description = "See title"},
                 new ApplicationActivity { Id = 3, Occurred = DateTime.Now.AddDays(-1), Title = "Also started with EF", Description = "This should be seeded"}
             };
-
             context.ApplicationActivities.AddOrUpdate(activities.ToArray());
-
-
+            
             var userTypes = new List<UserType>
             {
                 new UserType { Id = 1, Title = "Facebook User" },
                 new UserType { Id = 2, Title = "Email User" }
             };
             context.UserTypes.AddOrUpdate(userTypes.ToArray());
-            
+
+            var projectTypes = new List<ProjectType>
+            {
+                new ProjectType { Id = 1, Title = "Book or Series" },
+                new ProjectType { Id = 2, Title = "Script (Movie or Theatre)" },
+                new ProjectType { Id = 3, Title = "Comic" }
+            };
+            context.ProjectTypes.AddOrUpdate(projectTypes.ToArray());
+
+
             context.SaveChanges();
         }
     }
