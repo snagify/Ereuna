@@ -1,0 +1,74 @@
+﻿/* Redorange = FF4000 */
+
+
+.glass {
+
+    /* background styles */
+    position: relative;
+    display: inline;
+    padding: 15px 25px;
+    vertical-align: middle;
+
+    /* text styles */
+    text-decoration: none;
+    /*color: #fff;*/
+    font-size: 14px;
+    font-weight: 100;
+
+    border-radius: 10px;
+    box-shadow: 0px 5px 4px -2px #555;
+    text-shadow: 0px -1px #333;
+}
+
+.greenglass {
+    background: green; /*for compatibility with older browsers*/
+    background-image: linear-gradient(green,lightgreen);
+}
+
+.redglass {
+    background: #FF4000; /*for compatibility with older browsers*/
+    background-image: linear-gradient(#DD2000,#FF6044);
+}
+
+.blackglass {
+    background: black; /*for compatibility with older browsers*/
+    background-image: linear-gradient(black,#303030);
+}
+
+
+.glass:after{
+    content: '';
+    position: absolute;
+    border-radius: 6px;
+    top: 2px;
+    left: 2px;
+    width: calc(100% - 4px);
+    height: 50%;
+    background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+}
+
+
+a.glass:link {
+    color: white;
+    text-decoration: none;
+}
+
+/* visited link */
+a.glass:visited {
+    color: white;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a.glass:hover {
+    color: white;
+    text-decoration: none;
+    background: #FF4000; /*for compatibility with older browsers*/
+    background-image: linear-gradient(#DD2000,#FF6044);
+}
+
+/* selected link */
+a.glass:active {
+    color: white;
+    text-decoration: none;
+}
