@@ -129,9 +129,12 @@
     <Content Include="Content\ajax\ajax_loader_blue_48.gif" />
     <Content Include="Content\ajax\ajax_loader_blue_512.gif" />
     <Content Include="Content\ajax\ajax_loader_blue_64.gif" />
+    <Content Include="Content\bootstrap-social.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap-overrides.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\glass.css" />
     <Content Include="Content\Images\edit-sized.png" />
     <Content Include="Content\Images\edit.PNG" />
@@ -141,8 +144,10 @@
     <Content Include="Content\Images\write.PNG" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="login.html" />
     <Content Include="index.html" />
     <Content Include="index-ang.html" />
     <Content Include="partials\project-characters.html" />
@@ -166,6 +171,11 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Controllers\ManageProjectsController.js" />
     <Content Include="Scripts\Controllers\ProjectController.js" />
