@@ -45,6 +45,10 @@ textarea {
     margin-top: 20px;
     margin-bottom: 70px;
 }
+.contentbottom {
+        background-color: #CCC;
+    border-top: #666 solid 1px;
+}
 
 
 .header {

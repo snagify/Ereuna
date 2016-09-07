@@ -1,0 +1,85 @@
+﻿
+
+<div class="contentmiddle bodycontent container-fluid">
+
+    <div class="loginbox">
+        <h3>Login</h3>
+        <div class="row">
+            <div class="col-lg-5">
+
+                <div ng-show="!loading">
+                    <div ng-show="!IsLoggedIn">
+                        <p>
+                            Please login with your Facebook account. This is the only supported mechanism currently.
+                        </p>
+
+                        <a class="btn btn-block btn-social btn-facebook" ng-click="DoFacebookLogin()">
+                            <span class="fa fa-facebook"></span> Sign in with Facebook
+                        </a>
+
+
+                    </div>
+                        
+                    <div ng-show="IsLoggedIn">
+                        <p>
+                            You are already logged in via your Facebook account. <br />
+                            Welcome back {{ userFullName }}
+                        </p>
+                            
+                        <p>
+                            You can logout at any time by pressing the button below. Note that this will log you out of Facebook, not just Ereuna.
+                            <a class="btn btn-block btn-social btn-facebook" ng-click="DoFacebookLogout()">
+                                <span class="fa fa-facebook"></span> Logout of Facebook
+                            </a>
+                        </p>
+                            
+                        <p>
+                            If you no longer want Ereuna to have access to your basic Facebook details, please press the button below.
+                            <a class="btn btn-block btn-social btn-facebook" ng-click="DoFacebookDeauthentication()">
+                                <span class="fa fa-facebook"></span> Deauthorise Facebook
+                            </a>
+                        </p>
+
+                    </div>
+                </div>
+                
+                <div class="text-center" ng-show="loading">
+                    <img src="../Content/Images/spinner.gif" style="width: 50px;"  />
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <div class="verticalline"></div>
+            </div>
+
+            <div class="col-lg-5">
+
+                <h3>DEBUG</h3>
+                <p>
+                    Isloggedin: {{ IsLoggedIn }} <br/>
+                    userFullName: {{ userFullName }} <br/>
+                    LoginType: {{ LoginType }} <br/>
+                    HasProjects: {{ HasProjects }} <br/>
+
+                    loading: {{ loading }} <br/>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="contentbottom">
+    <div class="row bodycontent">
+
+        <div class="infobox container">
+            <h3>SIGN UP</h3>
+            <p class="alert-warning">
+                Custom username and passsword not supported currently
+            </p>
+        </div>
+
+    </div>
+</div>
+

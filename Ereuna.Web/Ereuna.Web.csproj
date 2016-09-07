@@ -140,6 +140,7 @@
     <Content Include="Content\Images\edit.PNG" />
     <Content Include="Content\Images\publish-sized.png" />
     <Content Include="Content\Images\publish.PNG" />
+    <Content Include="Content\Images\spinner.gif" />
     <Content Include="Content\Images\write-sized.png" />
     <Content Include="Content\Images\write.PNG" />
     <Content Include="Content\Site.css" />
@@ -150,6 +151,12 @@
     <Content Include="login.html" />
     <Content Include="index.html" />
     <Content Include="index-ang.html" />
+    <Content Include="ngControllers\AngularBootstrap.js" />
+    <Content Include="ngControllers\HomeController.js" />
+    <Content Include="ngControllers\LoginController.js" />
+    <Content Include="ngControllers\IndexController.js" />
+    <Content Include="ngPartials\login.html" />
+    <Content Include="ngPartials\home.html" />
     <Content Include="partials\project-characters.html" />
     <Content Include="partials\project.html" />
     <Content Include="partials\project-world.html" />

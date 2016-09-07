@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="ereuna">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,9 @@
     
     <!--<link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
     <link href="/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="Content/font-awesome.css" rel="stylesheet" />
+    <link href="Content/bootstrap-social.css" rel="stylesheet" />
+
     <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="/Content/glass.css" rel="stylesheet" type="text/css" />
 
@@ -17,73 +20,41 @@
     <script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
     
+    <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/angular-ui-router.js"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="/Scripts/ngFacebook.js"></script>
+    
+    <script src="/ngControllers/AngularBootstrap.js"></script>
+    <script src="/ngControllers/IndexController.js"></script>
+    <script src="/ngControllers/LoginController.js"></script>
+    <script src="/ngControllers/HomeController.js"></script>
+    
 </head>
 
-<body>
+<body ng-controller="IndexController">
     
-<div class="tophalf">
-    <div class="contenttop">
-        <div class="bodycontent">
-            <div class="row header">
-                <div class="col-lg-4">
-                    <h1>Ereuna</h1>
-                </div>
-                <div class="col-lg-8">
+<div class="contenttop">
+    <div class="bodycontent">
+        <div class="row header">
+            <div class="col-lg-4">
+                <h1>Ereuna</h1>
+            </div>
+            <div class="col-lg-8">
                     <span class="pull-right">
-                        <a href="#" class="glass redglass">Home</a>
+                        <a href="#/" class="{{ HomeMenuClass }}">Home</a>
                         <a href="#" class="glass blackglass">Blog</a>
                         <a href="#" class="glass blackglass">Support</a>
-                        <a href="login.html" class="glass blackglass">Login</a>
+                        <a href="#login" class="{{ LoginMenuClass }}">Login</a>
+
                     </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="contentmiddle">
-        <div class="bodycontent">
-            
-        </div>
-    </div>
-</div>
-    
-<div class="bottomhalf">
-    <div class="contentbottom">
-        <div class="row bodycontent">
-            <div class="col-lg-4">
-                <div class="infobox">
-                    <h3>WRITE</h3>
-
-                    <img src="Content/Images/write-sized.png" class="img-rounded" />
-
-                    <p>
-                        Character development, timelines and events, story arcs, maps and metadata about the world your story takes place; Ereuna's comprehensive set of tools let you plan your story from any angle.
-                    </p>
-                </div>
-
-            </div>
-            <div class="col-lg-4">
-                <div class="infobox">
-                    <h3>EDIT</h3>
-                    <img src="Content/Images/edit-sized.png" class="img-rounded" />
-
-                    <p>
-                        State of the art editing tools allow others to tag changes to any of your artefacts, allowing you to choose what you accept and reject. Editors have their own portal and are available to hire.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="infobox container">
-                    <h3>PUBLISH</h3>
-                    <img src="Content/Images/publish-sized.png" class="img-rounded" />
-                    <p>
-                        Extensive resources are provided to help you self-publish, or submit your work to one of our partner publishers to see if you can get a bite.
-                    </p>
-                </div>
+                
             </div>
         </div>
     </div>
 </div>
 
+<div ui-view></div>
 
 </body>
 
