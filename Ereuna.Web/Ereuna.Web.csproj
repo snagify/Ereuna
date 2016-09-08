@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -20,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -153,8 +155,10 @@
     <Content Include="index-ang.html" />
     <Content Include="ngControllers\AngularBootstrap.js" />
     <Content Include="ngControllers\HomeController.js" />
+    <Content Include="ngControllers\DebugController.js" />
     <Content Include="ngControllers\LoginController.js" />
     <Content Include="ngControllers\IndexController.js" />
+    <Content Include="ngPartials\debug.html" />
     <Content Include="ngPartials\login.html" />
     <Content Include="ngPartials\home.html" />
     <Content Include="partials\project-characters.html" />
@@ -203,7 +207,11 @@
     <Compile Include="Common\Api\ApiEndpoint.cs" />
     <Compile Include="Common\Api\HttpControllerAmmendments.cs" />
     <Compile Include="Common\Api\CustomHttpControllerTypeResolver.cs" />
+    <Compile Include="Common\FacebookApi.cs" />
+    <Compile Include="Common\IFacebookApi.cs" />
+    <Compile Include="Common\Session\ISessionProvider.cs" />
     <Compile Include="Common\Session\ISessionValidator.cs" />
+    <Compile Include="Common\Session\StandardSessionProvider.cs" />
     <Compile Include="Common\Session\TokenAuthorizationFilterAttribute.cs" />
     <Compile Include="Data\Idea.cs" />
     <Compile Include="Data\Project.cs" />
@@ -229,6 +237,7 @@
     <Compile Include="Models\FacebookLoginToken.cs" />
     <Compile Include="Models\FacebookUserToken.cs" />
     <Compile Include="Models\ProjectSummary.cs" />
+    <Compile Include="Modules\ComponentsModule.cs" />
     <Compile Include="Modules\DataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -246,17 +255,20 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201506140721341_Initial.resx">
       <DependentUpon>201506140721341_Initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.SessionState;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
@@ -48,6 +49,7 @@ namespace Ereuna.Web
 
 
             builder.RegisterModule(new DataModule());
+            builder.RegisterModule(new ComponentsModule());
 
             // builder.RegisterModule<AutofacWebTypesModule>();  http://docs.autofac.org/en/latest/integration/mvc.html
 
@@ -56,6 +58,20 @@ namespace Ereuna.Web
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             return container;
+        }
+
+
+        protected void Application_PostAuthorizeRequest()
+        {
+            if (IsWebApiRequest())
+            {
+                HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
+            }
+        }
+
+        private bool IsWebApiRequest()
+        {
+            return HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath.StartsWith(WebApiConfig.UrlPrefixRelative);
         }
 
     }

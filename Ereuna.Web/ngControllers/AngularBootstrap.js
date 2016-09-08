@@ -41,6 +41,12 @@ function configRoutes($stateProvider, $urlRouterProvider) {
             controller: 'LoginController',
             controllerAs: 'vm'
         })
+        .state('debug', {
+            url: '/debug',
+            templateUrl: 'ngPartials/debug.html',
+            controller: 'DebugController',
+            controllerAs: 'vm'
+        })
         ;
 
     $urlRouterProvider.otherwise('/');

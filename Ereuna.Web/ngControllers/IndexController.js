@@ -48,7 +48,7 @@ app.controller('IndexController', function ($rootScope, $scope, $http, $facebook
 
             $http({
                 method: 'GET',
-                url: 'api/projects'
+                url: 'api/projects/getrecentprojects'
             }).success(function (data, status) {
                 console.log(data);
                 $rootScope.Projects = data;

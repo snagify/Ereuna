@@ -2,13 +2,13 @@
 
 <div class="contentmiddle bodycontent container-fluid">
 
-    <div class="loginbox">
-        <h3>Login</h3>
+    <div class="loginbox">        
         <div class="row">
             <div class="col-lg-5">
 
                 <div ng-show="!loading">
                     <div ng-show="!IsLoggedIn">
+                        <h3>Login</h3>
                         <p>
                             Please login with your Facebook account. This is the only supported mechanism currently.
                         </p>
@@ -21,18 +21,19 @@
                     </div>
                         
                     <div ng-show="IsLoggedIn">
+                        <h3>Logout</h3>
                         <p>
-                            You are already logged in via your Facebook account. <br />
+                            You are already logged in via your Facebook account. <br/>
                             Welcome back {{ userFullName }}
                         </p>
-                            
+
                         <p>
                             You can logout at any time by pressing the button below. Note that this will log you out of Facebook, not just Ereuna.
                             <a class="btn btn-block btn-social btn-facebook" ng-click="DoFacebookLogout()">
                                 <span class="fa fa-facebook"></span> Logout of Facebook
                             </a>
                         </p>
-                            
+
                         <p>
                             If you no longer want Ereuna to have access to your basic Facebook details, please press the button below.
                             <a class="btn btn-block btn-social btn-facebook" ng-click="DoFacebookDeauthentication()">
@@ -48,21 +49,32 @@
                 </div>
             </div>
 
-            <div class="col-lg-2">
-                <div class="verticalline"></div>
+            <div class="col-lg-1">
+                <div class="verticalline pull-right"></div>
             </div>
 
-            <div class="col-lg-5">
+            <div class="col-lg-6">
+                <h3>Actions</h3>
 
-                <h3>DEBUG</h3>
-                <p>
-                    Isloggedin: {{ IsLoggedIn }} <br/>
-                    userFullName: {{ userFullName }} <br/>
-                    LoginType: {{ LoginType }} <br/>
-                    HasProjects: {{ HasProjects }} <br/>
+                <div ng-show="loading || !IsLoggedIn">
+                    You must login to perform actions.
+                </div>
 
-                    loading: {{ loading }} <br/>
-                </p>
+                <div ng-show="!loading && IsLoggedIn">
+                    The following actions are available:
+                    <ul>
+                        <li><a href="#">Manage my account</a></li>
+                        <li><a href="#">View activity</a></li>
+                        <li><a href="#">Check the news</a></li>
+                    </ul>
+                    
+                    Projects:
+                    <ul>
+                        <li><a href="#">Manage my projects</a></li>
+                        <li><a href="#">Create a new project</a></li>
+                        <li><a href="#">Browse and search public projects</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

@@ -25,7 +25,21 @@ namespace Ereuna.Web.Endpoints
             var projects = _context.Users.First(x => x.Id == id).Projects.Select(MapProjectToSummary);
 
             return projects;
-            
+        }
+
+        /// <summary>
+        /// Returns the two most recent projects (based on date they were last used)
+        /// </summary>
+        public IEnumerable<ProjectSummary> GetRecentProjects()
+        {
+            var id = UserId;
+
+            var projects = _context.Users.First(x => x.Id == id).Projects
+                .OrderByDescending(x => x.LastUsed)
+                .Take(2)
+                .Select(MapProjectToSummary);
+
+            return projects;
         }
 
         private ProjectSummary MapProjectToSummary(Project p)

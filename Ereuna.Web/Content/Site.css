@@ -106,11 +106,26 @@ textarea {
     text-align: left;
 }
 
+.debugbox {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+    
+    background-color: white;
+
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
 .verticalline {
-    text-align: center;
+    text-align: right;
     align-content: center;
     margin: auto;
+    margin-top: 25px;
     width: 1px;
-    height: 300px;
+    height: 450px;
     background-color: #777;
 }

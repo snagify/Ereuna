@@ -2,8 +2,11 @@
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Http;
+using Ereuna.Web.Common;
 using Ereuna.Web.Common.Api;
+using Ereuna.Web.Common.Session;
 using Ereuna.Web.Data;
 using Ereuna.Web.Models;
 using Newtonsoft.Json;
@@ -20,15 +23,20 @@ namespace Ereuna.Web.Endpoints
     public class LoginApi : ApiEndpoint
     {
         private readonly EreunaContext _context;
+        private readonly ISessionProvider _sessionProvider;
+        private readonly IFacebookApi _facebookApi;
 
-        public LoginApi(EreunaContext context)
+        public LoginApi(EreunaContext context, ISessionProvider sessionProvider, IFacebookApi facebookApi)
         {
             _context = context;
+            _sessionProvider = sessionProvider;
+            _facebookApi = facebookApi;
         }
 
-        [HttpPost] public IHttpActionResult Post([FromBody] FacebookAccessToken token)
+        [HttpPost]
+        public IHttpActionResult Post([FromBody] FacebookAccessToken token)
         {
-            if (IsTokenValid(token.AccessToken, token.UserId))
+            if (_facebookApi.IsFacebookUserTokenValid(token.AccessToken, token.UserId))
             {
                 var sessionToken = DoLogin(token);
                 return Ok(sessionToken);
@@ -48,7 +56,7 @@ namespace Ereuna.Web.Endpoints
             }
             else
             {
-                existingUser = new Data.User
+                existingUser = new User
                 {
                     UserType = _context.UserTypes.FirstOrDefault(x => x.Id == UserType.FacebookUser),
                     FacebookUserId = token.UserId,
@@ -62,43 +70,25 @@ namespace Ereuna.Web.Endpoints
                 _context.Users.Add(existingUser);
             }
 
-            var sessionToken = Guid.NewGuid().ToString();
+            _sessionProvider.SetSessionUser(existingUser);
 
             var userSession = new UserSession
             {
                 IsSessionOpen = true,
                 SessionStarted = DateTime.Now,
-                SessionToken = sessionToken,
+                SessionToken = _sessionProvider.GetSessionToken(),
                 User = existingUser
             };
             _context.UserSessions.Add(userSession);
 
             _context.SaveChanges();
 
-            return sessionToken;
+            return _sessionProvider.GetSessionToken();
         }
 
-        private bool IsTokenValid(string accessToken, string userId)
-        {
-            var apiTokenUrl = string.Format("https://graph.facebook.com/me?access_token={0}", accessToken);
-
-            var request = WebRequest.Create(apiTokenUrl);
-            request.Method = "GET";
-            var response = (HttpWebResponse)request.GetResponse();
-            using (var dataStream = response.GetResponseStream())
-            using (var reader = new StreamReader(dataStream))
-            {
-                var responseString = reader.ReadToEnd();
-                var facebookToken = JsonConvert.DeserializeObject<FacebookUserToken>(responseString);
-                if (facebookToken.Id == userId && facebookToken.Verified)
-                {
-                    return true;
-                }
-
-            }
-            return false;
-        }
-        
 
     }
+
+
+
 }
