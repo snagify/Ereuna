@@ -5,7 +5,7 @@ using Ereuna.Web.Common.Api;
 using Ereuna.Web.Common.Session;
 using Ereuna.Web.Data;
 
-namespace Ereuna.Web.Endpoints
+namespace Ereuna.Web.home.APIs
 {
     [TokenAuthorizationFilter]
     public class RecentProjectsApi : SecureApiEndpoint

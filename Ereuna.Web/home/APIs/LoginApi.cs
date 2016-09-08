@@ -1,17 +1,13 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Http;
 using Ereuna.Web.Common;
 using Ereuna.Web.Common.Api;
 using Ereuna.Web.Common.Session;
 using Ereuna.Web.Data;
 using Ereuna.Web.Models;
-using Newtonsoft.Json;
 
-namespace Ereuna.Web.Endpoints
+namespace Ereuna.Web.home.APIs
 {
     /// <summary>
     /// The Facebook login process is a bit complex. I'll document it here for my own sanity as well.

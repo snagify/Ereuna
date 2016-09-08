@@ -31,31 +31,31 @@ function configRoutes($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'ngPartials/home.html',
+            templateUrl: 'home/ngPartials/home.html',
             controller: 'HomeController',
             controllerAs: 'vm'
         })
         .state('login', {
             url: '/login',
-            templateUrl: 'ngPartials/login.html',
+            templateUrl: 'home/ngPartials/login.html',
             controller: 'LoginController',
             controllerAs: 'vm'
         })
         .state('debug', {
             url: '/debug',
-            templateUrl: 'ngPartials/debug.html',
+            templateUrl: 'home/ngPartials/debug.html',
             controller: 'DebugController',
             controllerAs: 'vm'
         })
         .state('projectsummary', {
             url: '/projectsummary/:projectId',
-            templateUrl: 'ngPartials/projectsummary.html',
+            templateUrl: 'home/ngPartials/projectsummary.html',
             controller: 'ProjectSummaryController',
             controllerAs: 'vm'
         })
         .state('newproject', {
             url: '/newproject',
-            templateUrl: 'ngPartials/newproject.html',
+            templateUrl: 'home/ngPartials/newproject.html',
             controller: 'NewProjectController',
             controllerAs: 'vm'
         })

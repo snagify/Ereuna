@@ -134,37 +134,35 @@
     <Content Include="Content\bootstrap-social.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootstrap-overrides.css" />
+    <Content Include="home\Content\bootstrap-overrides.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\glass.css" />
-    <Content Include="Content\Images\edit-sized.png" />
+    <Content Include="home\Content\glass.css" />
+    <Content Include="home\Content\Images\edit-sized.png" />
     <Content Include="Content\Images\edit.PNG" />
-    <Content Include="Content\Images\publish-sized.png" />
+    <Content Include="home\Content\Images\publish-sized.png" />
     <Content Include="Content\Images\publish.PNG" />
     <Content Include="Content\Images\spinner.gif" />
-    <Content Include="Content\Images\write-sized.png" />
+    <Content Include="home\Content\Images\write-sized.png" />
     <Content Include="Content\Images\write.PNG" />
-    <Content Include="Content\Site.css" />
+    <Content Include="home\Content\Site.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="login.html" />
     <Content Include="index.html" />
-    <Content Include="index-ang.html" />
-    <Content Include="ngControllers\AngularBootstrap.js" />
-    <Content Include="ngControllers\ProjectSummaryController.js" />
-    <Content Include="ngControllers\NewProjectController.js" />
-    <Content Include="ngControllers\HomeController.js" />
-    <Content Include="ngControllers\DebugController.js" />
-    <Content Include="ngControllers\LoginController.js" />
-    <Content Include="ngControllers\IndexController.js" />
-    <Content Include="ngPartials\debug.html" />
-    <Content Include="ngPartials\projectsummary.html" />
-    <Content Include="ngPartials\newproject.html" />
-    <Content Include="ngPartials\login.html" />
-    <Content Include="ngPartials\home.html" />
+    <Content Include="home\ngControllers\AngularBootstrap.js" />
+    <Content Include="home\ngControllers\ProjectSummaryController.js" />
+    <Content Include="home\ngControllers\NewProjectController.js" />
+    <Content Include="home\ngControllers\HomeController.js" />
+    <Content Include="home\ngControllers\DebugController.js" />
+    <Content Include="home\ngControllers\LoginController.js" />
+    <Content Include="home\ngControllers\IndexController.js" />
+    <Content Include="home\ngPartials\debug.html" />
+    <Content Include="home\ngPartials\projectsummary.html" />
+    <Content Include="home\ngPartials\newproject.html" />
+    <Content Include="home\ngPartials\login.html" />
+    <Content Include="home\ngPartials\home.html" />
     <Content Include="ngServices\ProjectTypes.js" />
     <Content Include="partials\project-characters.html" />
     <Content Include="partials\project.html" />
@@ -224,10 +222,10 @@
     <Compile Include="Data\Idea.cs" />
     <Compile Include="Data\Project.cs" />
     <Compile Include="Data\ProjectType.cs" />
-    <Compile Include="Endpoints\ActivityApi.cs" />
-    <Compile Include="Endpoints\LoginApi.cs" />
-    <Compile Include="Endpoints\RecentProjectsApi.cs" />
-    <Compile Include="Endpoints\ProjectsApi.cs" />
+    <Compile Include="home\APIs\ActivityApi.cs" />
+    <Compile Include="home\APIs\LoginApi.cs" />
+    <Compile Include="home\APIs\RecentProjectsApi.cs" />
+    <Compile Include="home\APIs\ProjectsApi.cs" />
     <Compile Include="Common\Api\SecureApiEndpoint.cs" />
     <Compile Include="Data\ApplicationActivity.cs" />
     <Compile Include="Data\EreunaContext.cs" />
@@ -271,6 +269,15 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\APIs\" />
+    <Folder Include="app\Content\Images\" />
+    <Folder Include="app\ngControllers\" />
+    <Folder Include="app\ngPartials\" />
+    <Folder Include="app\Scripts\" />
+    <Folder Include="Endpoints\" />
+    <Folder Include="home\Scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
