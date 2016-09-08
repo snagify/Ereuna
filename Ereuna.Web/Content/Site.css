@@ -106,6 +106,20 @@ textarea {
     text-align: left;
 }
 
+.standardcontentbox {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+    
+    background-color: white;
+
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
 .debugbox {
     padding-left: 10px;
     padding-right: 10px;

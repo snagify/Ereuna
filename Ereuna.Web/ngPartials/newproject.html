@@ -1,0 +1,54 @@
+﻿
+
+<div class="contentmiddle bodycontent container-fluid" ng-controller="NewProjectController">
+
+    <div class="standardcontentbox">
+        <h3>New Project</h3>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>Project Name</h4>
+                <p>
+                    Give your project a name. Don't worry you can change it later.
+                </p>
+                <input type="text" ng-model="ProjectName"/>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>Description</h4>
+                <p>
+                    If you feel inclined, add some more information about your project so that other's will know what it's about.
+                </p>
+                <input type="text" ng-model="Description" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>Project Type</h4>
+                <p>
+                    You must choose what type of project this will be.
+                </p>
+                <select ng-model="SelectedProjectType">
+                    <option ng-repeat="option in ProjectTypes" value="{{option.id}}">{{option.name}}</option>
+                </select>
+            </div>
+        </div>
+        
+        <button ng-click="ClearForm()" class="btn-default">Reset</button>
+        <button ng-click="SaveProject()" class="btn-primary">Create!</button>
+
+    </div>
+</div>
+
+
+<div class="contentbottom">
+    <div class="row bodycontent">
+        <div class="standardcontentbox">
+            Other options can go here
+        </div>
+    </div>
+</div>
+

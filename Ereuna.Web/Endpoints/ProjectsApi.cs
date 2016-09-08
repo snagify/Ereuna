@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
+using System.Web.Mvc;
 using Ereuna.Web.Common.Api;
 using Ereuna.Web.Common.Session;
 using Ereuna.Web.Data;
@@ -12,34 +14,45 @@ namespace Ereuna.Web.Endpoints
     public class ProjectsApi : SecureApiEndpoint
     {
         private readonly EreunaContext _context;
+        private readonly ISessionProvider _sessionProvider;
 
-        public ProjectsApi(EreunaContext context)
+        public ProjectsApi(EreunaContext context, ISessionProvider sessionProvider)
         {
             _context = context;
+            _sessionProvider = sessionProvider;
         }
         
         public IEnumerable<ProjectSummary> GetAllProjects()
         {
             var id = UserId;
 
-            var projects = _context.Users.First(x => x.Id == id).Projects.Select(MapProjectToSummary);
+            var projects = _context.Users.First(x => x.Id == id).Projects.OrderByDescending(x => x.LastUsed).Select(MapProjectToSummary);
 
             return projects;
         }
-
-        /// <summary>
-        /// Returns the two most recent projects (based on date they were last used)
-        /// </summary>
-        public IEnumerable<ProjectSummary> GetRecentProjects()
+        
+        public IHttpActionResult GetProject(int projectId)
         {
             var id = UserId;
 
-            var projects = _context.Users.First(x => x.Id == id).Projects
-                .OrderByDescending(x => x.LastUsed)
-                .Take(2)
-                .Select(MapProjectToSummary);
+            var project = _context.Users.First(x => x.Id == id).Projects.FirstOrDefault(x => x.Id == projectId);
 
-            return projects;
+            if (project == null) return NotFound();
+            return Ok(project);
+        }
+
+        public int PostProject(dynamic project)
+        {
+            var ptid = (int)project.projectTypeId;
+
+            var pt = _context.ProjectTypes.FirstOrDefault(x => x.Id == ptid);
+            var user = _sessionProvider.GetSessionUser();
+
+            var p = new Project { Name = project.name, Description = project.description, ProjectType = pt, LastUsed = DateTime.Now, User = user };
+            _context.Projects.Add(p);
+            _context.SaveChanges();
+
+            return p.Id;
         }
 
         private ProjectSummary MapProjectToSummary(Project p)

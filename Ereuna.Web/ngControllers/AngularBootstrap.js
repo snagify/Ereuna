@@ -1,4 +1,4 @@
-﻿var app = angular.module('ereuna', ['ngFacebook', 'ui.bootstrap', 'ui.router'])
+﻿var app = angular.module('ereuna', ['ProjectTypesService', 'ngFacebook', 'ui.bootstrap', 'ui.router', 'ngRoute'])
     .config(['$facebookProvider', function ($facebookProvider) {
         $facebookProvider.setAppId('923459464377126').setPermissions(['email', 'public_profile']);
     }])
@@ -45,6 +45,18 @@ function configRoutes($stateProvider, $urlRouterProvider) {
             url: '/debug',
             templateUrl: 'ngPartials/debug.html',
             controller: 'DebugController',
+            controllerAs: 'vm'
+        })
+        .state('projectsummary', {
+            url: '/projectsummary/:projectId',
+            templateUrl: 'ngPartials/projectsummary.html',
+            controller: 'ProjectSummaryController',
+            controllerAs: 'vm'
+        })
+        .state('newproject', {
+            url: '/newproject',
+            templateUrl: 'ngPartials/newproject.html',
+            controller: 'NewProjectController',
             controllerAs: 'vm'
         })
         ;
