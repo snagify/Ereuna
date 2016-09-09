@@ -8,6 +8,7 @@
         $rootScope.LoginType = 'None';
         $rootScope.HasProjects = false;
         $rootScope.Projects = [];
+        $rootScope.UserId = 0;
 
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;

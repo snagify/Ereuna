@@ -21,6 +21,7 @@ app.controller('IndexController', function ($rootScope, $scope, $http, $facebook
                 $rootScope.userFullName = '';
                 $rootScope.LoginType = 'None';
                 $rootScope.IsLoggedIn = false;
+                $rootScope.UserId = 0;
             }
         });
     };
@@ -42,8 +43,10 @@ app.controller('IndexController', function ($rootScope, $scope, $http, $facebook
             console.log(headers);
             console.log(config);
             
-            $rootScope.SessionToken = data;
-            $window.sessionStorage.token = data;
+            $rootScope.SessionToken = data.SessionToken;
+            $window.sessionStorage.token = data.SessionToken;
+
+            $rootScope.UserId = data.User.UserId;
 
 
             $http({
@@ -52,7 +55,8 @@ app.controller('IndexController', function ($rootScope, $scope, $http, $facebook
             }).success(function (data, status) {
                 console.log(data);
                 $rootScope.Projects = data;
-                $rootScope.HasProjects = true;
+                if (data.length > 0) $rootScope.HasProjects = true;
+
             }).error(function (data, status) {
                 console.log(status);
             });

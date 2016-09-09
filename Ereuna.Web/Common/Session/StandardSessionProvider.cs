@@ -1,5 +1,4 @@
 ﻿using System.Web;
-using Ereuna.Web.Data;
 
 namespace Ereuna.Web.Common.Session
 {
@@ -14,9 +13,9 @@ namespace Ereuna.Web.Common.Session
             return HttpContext.Current.Session[UserObjectKey] != null;
         }
 
-        public User GetSessionUser()
+        public SessionUser GetSessionUser()
         {
-            return (User)HttpContext.Current.Session[UserObjectKey];
+            return (SessionUser)HttpContext.Current.Session[UserObjectKey];
         }
 
         public string GetSessionToken()
@@ -24,7 +23,7 @@ namespace Ereuna.Web.Common.Session
             return HttpContext.Current.Session.SessionID;
         }
 
-        public void SetSessionUser(User user)
+        public void SetSessionUser(SessionUser user)
         {
             HttpContext.Current.Session[UserObjectKey] = user;
         }

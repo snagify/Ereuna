@@ -45,7 +45,8 @@ namespace Ereuna.Web.home.APIs
             var ptid = (int)project.projectTypeId;
 
             var pt = _context.ProjectTypes.FirstOrDefault(x => x.Id == ptid);
-            var user = _sessionProvider.GetSessionUser();
+            var SessionUser = _sessionProvider.GetSessionUser();
+            var user = _context.Users.FirstOrDefault(x => x.Id == SessionUser.Id);
 
             var p = new Project { Name = project.name, Description = project.description, ProjectType = pt, LastUsed = DateTime.Now, User = user };
             _context.Projects.Add(p);

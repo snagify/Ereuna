@@ -74,6 +74,16 @@
                         <li><a href="#newproject">Create a new project</a></li>
                         <li><a href="#">Browse and search public projects</a></li>
                     </ul>
+                    
+                    Recent:
+                    <ul>
+                        <li ng-repeat="project in Projects">
+                            {{ project.ProjectType}} :: {{ project.Name }} 
+                            | <a href="#/projectsummary/{{ project.ProjectId }}">View summary</a> 
+                            | <a href="#/projectsummary/{{ project.ProjectId }}">Continue working</a> 
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </div>

@@ -41,7 +41,7 @@ namespace Ereuna.Web.home.APIs
             return Unauthorized();
         }
 
-        private string DoLogin(FacebookAccessToken token)
+        private LoginResponse DoLogin(FacebookAccessToken token)
         {
             var existingUser = _context.Users.FirstOrDefault(x => x.FacebookUserId == token.UserId);
 
@@ -66,7 +66,7 @@ namespace Ereuna.Web.home.APIs
                 _context.Users.Add(existingUser);
             }
 
-            _sessionProvider.SetSessionUser(existingUser);
+            _sessionProvider.SetSessionUser(new SessionUser(existingUser));
 
             var userSession = new UserSession
             {
@@ -79,12 +79,37 @@ namespace Ereuna.Web.home.APIs
 
             _context.SaveChanges();
 
-            return _sessionProvider.GetSessionToken();
+            return new LoginResponse {SessionToken = _sessionProvider.GetSessionToken(), User = Map(existingUser)};
         }
 
+        private LoginUser Map(User user)
+        {
+            return new LoginUser
+            {
+                First = user.First,
+                Last = user.Last,
+                LastLogin = DateTime.Now, // TODO
+                UserName = "FB User",
+                UserId = user.Id
+            };
+        }
 
     }
 
+    public class LoginResponse
+    {
+        public string SessionToken { get; set; }
+        public LoginUser User { get; set; }
+    }
+
+    public class LoginUser
+    {
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string First { get; set; }
+        public string Last { get; set; }
+        public DateTime LastLogin { get; set; }
+    }
 
 
 }

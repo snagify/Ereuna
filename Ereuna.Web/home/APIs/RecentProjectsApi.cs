@@ -24,7 +24,9 @@ namespace Ereuna.Web.home.APIs
         {
             var id = UserId;
 
-            var projects = _context.Users.First(x => x.Id == id).Projects
+            var user = _context.Users.First(x => x.Id == id);
+            var projects = user
+                .Projects
                 .OrderByDescending(x => x.LastUsed)
                 .Take(2)
                 .Select(Map);

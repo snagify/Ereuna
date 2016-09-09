@@ -120,6 +120,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\Content\bootstrap-overrides.css" />
+    <Content Include="app\Content\Site.css" />
+    <Content Include="app\ngControllers\AngularBootstrap.js" />
+    <Content Include="app\ngControllers\AppController.js" />
     <Content Include="App_Data\Ereuna.mdf" />
     <Content Include="App_Data\Ereuna_log.ldf">
       <DependentUpon>Ereuna.mdf</DependentUpon>
@@ -150,6 +154,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="app.html" />
     <Content Include="index.html" />
     <Content Include="home\ngControllers\AngularBootstrap.js" />
     <Content Include="home\ngControllers\ProjectSummaryController.js" />
@@ -273,10 +278,8 @@
   <ItemGroup>
     <Folder Include="app\APIs\" />
     <Folder Include="app\Content\Images\" />
-    <Folder Include="app\ngControllers\" />
     <Folder Include="app\ngPartials\" />
     <Folder Include="app\Scripts\" />
-    <Folder Include="Endpoints\" />
     <Folder Include="home\Scripts\" />
   </ItemGroup>
   <PropertyGroup>
