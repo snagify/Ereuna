@@ -37,12 +37,12 @@ function configRoutes($stateProvider, $urlRouterProvider) {
             controller: 'HomeController',
             controllerAs: 'vm'
         })
-    //    .state('projectsummary', {
-    //        url: '/projectsummary/:projectId',
-    //        templateUrl: 'home/ngPartials/projectsummary.html',
-    //        controller: 'ProjectSummaryController',
-    //        controllerAs: 'vm'
-    //    })
+        .state('project', {
+            url: '/:projectId',
+            templateUrl: 'app/ngPartials/Project.html',
+            controller: 'ProjectController',
+            controllerAs: 'vm'
+        })
     ;
 
     $urlRouterProvider.otherwise('/');

@@ -9,8 +9,9 @@ app.controller('AppController', function ($rootScope, $scope, $http, $facebook, 
     
     $rootScope.IsProjectLoaded = false;
     $rootScope.ProjectName = "Default projectname";
-    $rootScope.ProjectType = "Book/Series";
-    $rootScope.ProjectId = 0;
+    $rootScope.ProjectType = "Unknown";
+
+
 
     // Step 1, verify the user is logged in.
     $http({

@@ -28,6 +28,7 @@
     <script src="/app/ngControllers/AngularBootstrap.js"></script>
     <script src="/app/ngControllers/AppController.js"></script>
     <script src="/app/ngControllers/HomeController.js"></script>
+    <script src="/app/ngControllers/ProjectController.js"></script>
 
     <script src="/ngServices/ProjectTypes.js"></script>
 
@@ -64,10 +65,15 @@
                         </ul>
                     </li>
                     <li class="divider-vertical"></li>
-                    <li><a href="#">
-                        <span class="glyphicon glyphicon-list-alt"></span>
-                        {{ ProjectName }} ({{ ProjectType }})
-                    </a></li>
+                    <li>
+                        <a href="#" ng-show="IsProjectLoaded">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                            {{ ProjectName }} ({{ ProjectType }})
+                        </a>
+                        <a href="#" ng-show="!IsProjectLoaded">
+                            <span class="glyphicon glyphicon-list-alt"></span> No project currently loaded
+                        </a>
+</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">User: {{ FullName }}</a></li>

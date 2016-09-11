@@ -37,7 +37,7 @@ namespace Ereuna.Web.Endpoints
             var project = _context.Users.First(x => x.Id == id).Projects.FirstOrDefault(x => x.Id == projectId);
 
             if (project == null) return NotFound();
-            return Ok(project);
+            return Ok(MapProjectToSummary(project));
         }
 
         public int PostProject(dynamic project)

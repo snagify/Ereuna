@@ -124,8 +124,10 @@
     <Content Include="app\Content\Images\logo.png" />
     <Content Include="app\Content\Site.css" />
     <Content Include="app\ngControllers\AngularBootstrap.js" />
+    <Content Include="app\ngControllers\ProjectController.js" />
     <Content Include="app\ngControllers\HomeController.js" />
     <Content Include="app\ngControllers\AppController.js" />
+    <Content Include="app\ngPartials\Project.html" />
     <Content Include="app\ngPartials\Home.html" />
     <Content Include="App_Data\Ereuna.mdf" />
     <Content Include="App_Data\Ereuna_log.ldf">

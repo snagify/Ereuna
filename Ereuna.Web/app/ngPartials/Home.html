@@ -1,26 +1,28 @@
 ﻿<div>
     <h2>Home</h2>
     
-    <span class="glyphicon glyphicon-folder-open"></span>
-    <h4>Recent Projects</h4>
+    <div ng-show="HasProjects">
+        <h4><span class="glyphicon glyphicon-folder-open"></span> Recent Projects</h4>
+
+        <ul>
+            <li ng-repeat="project in RecentProjects">
+                {{ project.ProjectType}} :: {{ project.Name }}
+                 <a href="#/projectsummary/{{ project.ProjectId }}"><span class="glyphicon glyphicon-info-sign"></span></a>
+                 <a href="#/{{ project.ProjectId }}"><span class="glyphicon glyphicon-edit"></span></a>
+            </li>
+        </ul>
+    </div>
     
-    <ul>
-        <li ng-repeat="project in RecentProjects">
-            {{ project.ProjectType}} :: {{ project.Name }}
-            | <a href="#/projectsummary/{{ project.ProjectId }}"><span class="glyphicon glyphicon-info-sign"></span></a>
-            | <a href="#/projectsummary/{{ project.ProjectId }}"><span class="glyphicon glyphicon-edit"></span></a>
-        </li>
-    </ul>
-    
-    <span class="glyphicon glyphicon-folder-close"></span>
-    <h4>All Projects</h4>
+    <h4><span class="glyphicon glyphicon-folder-close"></span> All Projects</h4>
     
     <ul>
         <li ng-repeat="project in AllProjects">
-            {{ project.ProjectType}} :: {{ project.Name }}
-            | <a href="#/projectsummary/{{ project.ProjectId }}"><span class="glyphicon glyphicon-info-sign"></span></a>
-            | <a href="#/projectsummary/{{ project.ProjectId }}"><span class="glyphicon glyphicon-edit"></span></a>
+            {{ project.Type}} :: {{ project.Name }}
+             <a href="#/projectsummary/{{ project.ProjectId }}"><span class="glyphicon glyphicon-info-sign"></span></a>
+             <a href="#/{{ project.ProjectId }}"><span class="glyphicon glyphicon-edit"></span></a>
         </li>
+        <li ng-show="!HasProjects">No projects to show</li>
+        <li><a href="#">Create new project</a></li>
     </ul>
 </div>
 
