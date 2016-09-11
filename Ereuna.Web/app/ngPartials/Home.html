@@ -1,0 +1,26 @@
+﻿<div>
+    <h2>Home</h2>
+    
+    <span class="glyphicon glyphicon-folder-open"></span>
+    <h4>Recent Projects</h4>
+    
+    <ul>
+        <li ng-repeat="project in RecentProjects">
+            {{ project.ProjectType}} :: {{ project.Name }}
+            | <a href="#/projectsummary/{{ project.ProjectId }}"><span class="glyphicon glyphicon-info-sign"></span></a>
+            | <a href="#/projectsummary/{{ project.ProjectId }}"><span class="glyphicon glyphicon-edit"></span></a>
+        </li>
+    </ul>
+    
+    <span class="glyphicon glyphicon-folder-close"></span>
+    <h4>All Projects</h4>
+    
+    <ul>
+        <li ng-repeat="project in AllProjects">
+            {{ project.ProjectType}} :: {{ project.Name }}
+            | <a href="#/projectsummary/{{ project.ProjectId }}"><span class="glyphicon glyphicon-info-sign"></span></a>
+            | <a href="#/projectsummary/{{ project.ProjectId }}"><span class="glyphicon glyphicon-edit"></span></a>
+        </li>
+    </ul>
+</div>
+

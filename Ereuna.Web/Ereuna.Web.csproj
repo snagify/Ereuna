@@ -121,9 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\Content\bootstrap-overrides.css" />
+    <Content Include="app\Content\Images\logo.png" />
     <Content Include="app\Content\Site.css" />
     <Content Include="app\ngControllers\AngularBootstrap.js" />
+    <Content Include="app\ngControllers\HomeController.js" />
     <Content Include="app\ngControllers\AppController.js" />
+    <Content Include="app\ngPartials\Home.html" />
     <Content Include="App_Data\Ereuna.mdf" />
     <Content Include="App_Data\Ereuna_log.ldf">
       <DependentUpon>Ereuna.mdf</DependentUpon>
@@ -227,10 +230,10 @@
     <Compile Include="Data\Idea.cs" />
     <Compile Include="Data\Project.cs" />
     <Compile Include="Data\ProjectType.cs" />
-    <Compile Include="home\APIs\ActivityApi.cs" />
-    <Compile Include="home\APIs\LoginApi.cs" />
-    <Compile Include="home\APIs\RecentProjectsApi.cs" />
-    <Compile Include="home\APIs\ProjectsApi.cs" />
+    <Compile Include="Endpoints\ActivityApi.cs" />
+    <Compile Include="Endpoints\LoginApi.cs" />
+    <Compile Include="Endpoints\RecentProjectsApi.cs" />
+    <Compile Include="Endpoints\ProjectsApi.cs" />
     <Compile Include="Common\Api\SecureApiEndpoint.cs" />
     <Compile Include="Data\ApplicationActivity.cs" />
     <Compile Include="Data\EreunaContext.cs" />
@@ -276,10 +279,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\APIs\" />
-    <Folder Include="app\Content\Images\" />
-    <Folder Include="app\ngPartials\" />
     <Folder Include="app\Scripts\" />
+    <Folder Include="home\APIs\" />
     <Folder Include="home\Scripts\" />
   </ItemGroup>
   <PropertyGroup>

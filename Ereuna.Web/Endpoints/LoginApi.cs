@@ -7,7 +7,7 @@ using Ereuna.Web.Common.Session;
 using Ereuna.Web.Data;
 using Ereuna.Web.Models;
 
-namespace Ereuna.Web.home.APIs
+namespace Ereuna.Web.Endpoints
 {
     /// <summary>
     /// The Facebook login process is a bit complex. I'll document it here for my own sanity as well.
@@ -34,11 +34,22 @@ namespace Ereuna.Web.home.APIs
         {
             if (_facebookApi.IsFacebookUserTokenValid(token.AccessToken, token.UserId))
             {
-                var sessionToken = DoLogin(token);
-                return Ok(sessionToken);
+                var loginResponse = DoLogin(token);
+                return Ok(loginResponse);
             }
 
             return Unauthorized();
+        }
+
+        public IHttpActionResult GetLogin()
+        {
+            if (_sessionProvider.IsSessionActive() == false) return Unauthorized();
+
+            var user = _sessionProvider.GetSessionUser();
+            if (user == null) return Unauthorized();
+
+            var result = new LoginResponse { SessionToken = _sessionProvider.GetSessionToken(), User = Map(user) };
+            return Ok(result);
         }
 
         private LoginResponse DoLogin(FacebookAccessToken token)
@@ -94,6 +105,17 @@ namespace Ereuna.Web.home.APIs
             };
         }
 
+        private LoginUser Map(SessionUser user)
+        {
+            return new LoginUser
+            {
+                First = user.First,
+                Last = user.Last,
+                LastLogin = DateTime.Now, // TODO
+                UserName = "FB User",
+                UserId = user.Id
+            };
+        }
     }
 
     public class LoginResponse

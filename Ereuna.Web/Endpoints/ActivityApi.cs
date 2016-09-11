@@ -4,7 +4,7 @@ using Ereuna.Web.Common.Api;
 using Ereuna.Web.Data;
 using Ereuna.Web.Models;
 
-namespace Ereuna.Web.home.APIs
+namespace Ereuna.Web.Endpoints
 {
     public class ActivityApi : ApiEndpoint
     {

@@ -30,20 +30,20 @@
 app.config(['$stateProvider', '$urlRouterProvider', configRoutes]);
 
 function configRoutes($stateProvider, $urlRouterProvider) {
-    //$stateProvider
-    //    .state('home', {
-    //        url: '/',
-    //        templateUrl: 'app/ngPartials/home.html',
-    //        controller: 'AppController',
-    //        controllerAs: 'vm'
-    //    })
+    $stateProvider
+        .state('home', {
+            url: '/',
+            templateUrl: 'app/ngPartials/Home.html',
+            controller: 'HomeController',
+            controllerAs: 'vm'
+        })
     //    .state('projectsummary', {
     //        url: '/projectsummary/:projectId',
     //        templateUrl: 'home/ngPartials/projectsummary.html',
     //        controller: 'ProjectSummaryController',
     //        controllerAs: 'vm'
     //    })
-    //    ;
+    ;
 
     $urlRouterProvider.otherwise('/');
 }

@@ -1,6 +1,54 @@
 ﻿/* Redorange = FF4000 */
 body {
+    padding: 0px;
+    margin: 0px;
+    background-color: #111;
+}
+
+.MenuBar {
+    color: #FF4000;
+    padding: 0px;
+    margin: 0px;
+}
+
+.MenuBar .Tab {
+    border: 1px #444444 solid;
+    height: 40px;
+    display: inline;
+    position: relative;
+    line-height: 40px; 
+    vertical-align: middle;
+    background-color: #333;
+}
+.MenuBar .Title {
+    font-size: larger;
+}
+
+
+.navbar .Logo {
+    width: 20px;
+}
+
+
+.navbar-inverse .divider-vertical {
+    height: 30px;
+    margin: 10px 9px;
     padding-top: 0px;
-    padding-bottom: 0px;
-    background-color: #000;
+    border-right: 1px solid #555555;
+    border-left: 1px solid #222222;
+}
+
+@media (max-width: 767px) {
+    .navbar-collapse .nav > .divider-vertical {
+        display: none;
+     }
+}
+
+.AppBody {
+    background-color: #333;
+    border: 1px #555 solid;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    height: 100%;
 }

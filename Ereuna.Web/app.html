@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ereuna</title>
 
-    
+
     <!--<link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
     <link href="/Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="Content/font-awesome.css" rel="stylesheet" />
@@ -14,26 +14,72 @@
     <script src="/Scripts/modernizr-2.6.2.js"></script>
     <script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
-    
+
     <script src="/Scripts/angular.js"></script>
     <script src="/Scripts/angular-route.js"></script>
     <script src="/Scripts/angular-ui-router.js"></script>
     <script src="/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
     <script src="/Scripts/ngFacebook.js"></script>
-    
+
 
     <link href="/app/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="/app/Content/bootstrap-overrides.css" rel="stylesheet" />
-    
+
     <script src="/app/ngControllers/AngularBootstrap.js"></script>
-    
+    <script src="/app/ngControllers/AppController.js"></script>
+    <script src="/app/ngControllers/HomeController.js"></script>
+
     <script src="/ngServices/ProjectTypes.js"></script>
-    
+
 </head>
 
 <body ng-controller="AppController">
-  
-<div ui-view></div>
+    
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="app/Content/Images/logo.png" class="Logo" />
+                    EREUNA
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="divider-vertical"></li>
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            Options
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Change project</a></li>
+                            <li><a href="#">Change privacy settings</a></li>
+                            <li><a href="#">Find an editor</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="#">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                        {{ ProjectName }} ({{ ProjectType }})
+                    </a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">User: {{ FullName }}</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="AppBody">
+        <div ui-view></div>
+    </div>
 
 </body>
 
