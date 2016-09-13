@@ -253,7 +253,6 @@
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\FacebookLoginToken.cs" />
     <Compile Include="Models\FacebookUserToken.cs" />
-    <Compile Include="Models\ProjectSummary.cs" />
     <Compile Include="Modules\ComponentsModule.cs" />
     <Compile Include="Modules\DataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

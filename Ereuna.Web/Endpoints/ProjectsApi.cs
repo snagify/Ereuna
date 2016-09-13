@@ -10,12 +10,12 @@ using Ereuna.Web.Models;
 namespace Ereuna.Web.Endpoints
 {
     [TokenAuthorizationFilter]
-    public class ProjectsApi : SecureApiEndpoint
+    public class ProjectSummaryApi : SecureApiEndpoint
     {
         private readonly EreunaContext _context;
         private readonly ISessionProvider _sessionProvider;
 
-        public ProjectsApi(EreunaContext context, ISessionProvider sessionProvider)
+        public ProjectSummaryApi(EreunaContext context, ISessionProvider sessionProvider)
         {
             _context = context;
             _sessionProvider = sessionProvider;
@@ -25,7 +25,7 @@ namespace Ereuna.Web.Endpoints
         {
             var id = UserId;
 
-            var projects = _context.Users.First(x => x.Id == id).Projects.OrderByDescending(x => x.LastUsed).Select(MapProjectToSummary);
+            var projects = _context.Users.First(x => x.Id == id).Projects.OrderByDescending(x => x.LastUsed).Select(Map);
 
             return projects;
         }
@@ -37,7 +37,7 @@ namespace Ereuna.Web.Endpoints
             var project = _context.Users.First(x => x.Id == id).Projects.FirstOrDefault(x => x.Id == projectId);
 
             if (project == null) return NotFound();
-            return Ok(MapProjectToSummary(project));
+            return Ok(Map(project));
         }
 
         public int PostProject(dynamic project)
@@ -55,7 +55,7 @@ namespace Ereuna.Web.Endpoints
             return p.Id;
         }
 
-        private ProjectSummary MapProjectToSummary(Project p)
+        private static ProjectSummary Map(Project p)
         {
             if (p == null) return null;
             return new ProjectSummary
@@ -68,7 +68,16 @@ namespace Ereuna.Web.Endpoints
             };
 
         }
+        
+    }
 
+    public class ProjectSummary
+    {
+        public int Id { get; set; }
+        public DateTime LastUsed { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
+        public string Type { get; set; }
     }
 }

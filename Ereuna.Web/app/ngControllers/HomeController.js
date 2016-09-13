@@ -9,7 +9,7 @@ app.controller('HomeController', function ($rootScope, $scope, $http, $facebook,
     function LoadProjects() {
         $http({
             method: 'GET',
-            url: 'api/projects/'
+            url: 'api/projectsummary/'
         }).success(function(data, status) {
 
             $scope.AllProjects = data;

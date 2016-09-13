@@ -48,7 +48,7 @@ app.controller('LoginController', function ($rootScope, $scope, $http, $facebook
 
             $http({
                 method: 'GET',
-                url: 'api/projects'
+                url: 'api/projectsummary'
             }).success(function (data, status) {
                 console.log(data);
                 $rootScope.Projects = data;

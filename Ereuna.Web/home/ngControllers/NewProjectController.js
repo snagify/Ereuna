@@ -17,7 +17,7 @@
         var newProject = { name: $scope.ProjectName, description: $scope.Description, projectTypeId: $scope.SelectedProjectType };
 
         $http
-            .post('api/projects', newProject)
+            .post('api/projectsummary', newProject)
             .success(function (data, status, headers, config) {
                 console.log('New project id:' + data);
                 $location.path('/projectsummary/' + data);

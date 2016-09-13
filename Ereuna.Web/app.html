@@ -53,7 +53,7 @@
                 <ul class="nav navbar-nav">
                     <li class="divider-vertical"></li>
                     <li>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-cog"></span>
                             Options
                             <span class="caret"></span>
@@ -66,11 +66,11 @@
                     </li>
                     <li class="divider-vertical"></li>
                     <li>
-                        <a href="#" ng-show="IsProjectLoaded">
+                        <a href="#/{{ProjectId}}" ng-show="IsProjectLoaded">
                             <span class="glyphicon glyphicon-list-alt"></span>
                             {{ ProjectName }} ({{ ProjectType }})
                         </a>
-                        <a href="#" ng-show="!IsProjectLoaded">
+                        <a ng-show="!IsProjectLoaded">
                             <span class="glyphicon glyphicon-list-alt"></span> No project currently loaded
                         </a>
 </li>

@@ -7,7 +7,7 @@
 
     $http({
         method: 'GET',
-        url: 'api/projects/' + $stateParams.projectId
+        url: 'api/projectsummary/' + $stateParams.projectId
     }).success(function (data, status) {
         
         $scope.LastUsed = data[0].LastUsed;

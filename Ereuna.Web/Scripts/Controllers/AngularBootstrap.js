@@ -36,7 +36,7 @@ function configRoutes($stateProvider, $urlRouterProvider) {
             controllerAs: 'vm'
         })
         .state('projects', {
-            url: '/projects',
+            url: '/projectsummary',
             templateUrl: 'partials/projects.html',
             controller: 'ManageProjectsController',
             controllerAs: 'vm'
