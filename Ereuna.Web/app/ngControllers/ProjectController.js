@@ -29,9 +29,10 @@ app.controller('ProjectController', function ($rootScope, $scope, $http, $facebo
                 if (status == 200) {
                     $rootScope.IsProjectLoaded = true;
                     $rootScope.ProjectName = data.Name;
+                    $scope.ProjectName = data.Name;
                     $rootScope.ProjectType = data.Type;
                     $rootScope.ProjectId = data.Id;
-                    $scope.ProjectInformation = "";
+                    $scope.ProjectInformation = data.Description;
                 }
 
 

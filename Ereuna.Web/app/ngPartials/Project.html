@@ -1,10 +1,11 @@
 ﻿<div>
     <h2>Project</h2>
-    
+
     <div class="container-fluid">
         <div class="col-lg-5">
-            
-            
+
+            <h4>Project Information</h4>
+
             <form class="form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="projectName">Name:</label>
@@ -27,24 +28,22 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="button" class="btn btn-primary" ng-show="!IsEditingProject" ng-click="EditProject()">Edit</button>
+                <div class="form-group ">
+                    <div ng-show="!IsEditingProject" class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-primary" ng-click="EditProject()">Edit</button>
                     </div>
-                    <div class="col-sm-offset-2 col-sm-10" ng-show="IsEditingProject" ng-click="SaveProject()">
-                        <button type="submit" class="btn btn-success">Save</button>
-                    </div>
-                    <div class="col-sm-offset-2 col-sm-10" ng-show="IsEditingProject" ng-click="CancelProjectChanges()">
-                        <button type="submit" class="btn btn-danger">Cancel</button>
+                    <div class="col-sm-offset-2 col-sm-10" ng-show="IsEditingProject">
+                        <button type="submit" class="btn btn-success" ng-click="SaveProject()">Save</button>
+                        <button type="submit" class="btn btn-danger" ng-click="CancelProjectChanges()">Cancel</button>
                     </div>
                 </div>
             </form>
-            
-            
 
         </div>
 
     </div>
+
+</div>
 
 </div>
 
