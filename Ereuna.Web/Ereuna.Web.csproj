@@ -235,7 +235,7 @@
     <Compile Include="Endpoints\ActivityApi.cs" />
     <Compile Include="Endpoints\LoginApi.cs" />
     <Compile Include="Endpoints\RecentProjectsApi.cs" />
-    <Compile Include="Endpoints\ProjectsApi.cs" />
+    <Compile Include="Endpoints\ProjectSummaryApi.cs" />
     <Compile Include="Common\Api\SecureApiEndpoint.cs" />
     <Compile Include="Data\ApplicationActivity.cs" />
     <Compile Include="Data\EreunaContext.cs" />

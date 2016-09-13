@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web.Http;
 using Ereuna.Web.Common.Api;
@@ -53,6 +54,22 @@ namespace Ereuna.Web.Endpoints
             _context.SaveChanges();
 
             return p.Id;
+        }
+
+        public IHttpActionResult Put(ProjectSummary project)
+        {
+            if (string.IsNullOrEmpty(project.Name)) return BadRequest("Missing field: Project Name");
+            
+            var dbProject = _context.Users.First(x => x.Id == UserId).Projects.FirstOrDefault(x => x.Id == project.Id);
+            if (dbProject == null) return NotFound();
+
+            dbProject.Name = project.Name;
+            dbProject.Description = project.Description;
+
+            _context.Projects.AddOrUpdate(dbProject);
+            _context.SaveChanges();
+
+            return Ok();
         }
 
         private static ProjectSummary Map(Project p)

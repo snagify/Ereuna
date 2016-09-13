@@ -4,6 +4,7 @@ body {
     margin: 0px;
     background-color: #111;
     color: #EEE;
+    height: 100vh;
 }
 
 .MenuBar {
@@ -51,5 +52,5 @@ body {
     border-radius: 10px;
     margin: 10px;
     padding: 15px;
-    height: 100%;
+    height: 90%;
 }
