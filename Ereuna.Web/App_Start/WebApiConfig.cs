@@ -21,6 +21,7 @@ namespace Ereuna.Web
             config.MapHttpAttributeRoutes();
 
             //config.Routes.MapHttpRoute("DefaultApiAction", UrlPrefix + "/{controller}/{action}");
+            config.Routes.MapHttpRoute("ApiWithProjectIdAndId", UrlPrefix + "/{controller}/{projectid}/{id}");
             config.Routes.MapHttpRoute("DefaultApiId", UrlPrefix + "/{controller}/{id}", new { id = RouteParameter.Optional });
             //config.Routes.MapHttpRoute("DefaultApiActionId", UrlPrefix + "/{controller}/{action}/{id}");
             //config.Routes.MapHttpRoute("DefaultApiGet", UrlPrefix + "/{controller}", new { action = "Get" }, new { httpMethod = new HttpMethodConstraint(HttpMethod.Get) });

@@ -27,4 +27,5 @@ namespace Ereuna.Web.Data
         public bool IsEmailVerified { get; set; }
 
     }
+
 }

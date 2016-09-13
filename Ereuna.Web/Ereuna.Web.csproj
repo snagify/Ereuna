@@ -232,6 +232,7 @@
     <Compile Include="Data\Idea.cs" />
     <Compile Include="Data\Project.cs" />
     <Compile Include="Data\ProjectType.cs" />
+    <Compile Include="Endpoints\IdeaApi.cs" />
     <Compile Include="Endpoints\ActivityApi.cs" />
     <Compile Include="Endpoints\LoginApi.cs" />
     <Compile Include="Endpoints\RecentProjectsApi.cs" />

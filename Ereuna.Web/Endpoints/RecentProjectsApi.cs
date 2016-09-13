@@ -10,23 +10,14 @@ namespace Ereuna.Web.Endpoints
     [TokenAuthorizationFilter]
     public class RecentProjectsApi : SecureApiEndpoint
     {
-        private readonly EreunaContext _context;
-
-        public RecentProjectsApi(EreunaContext context)
-        {
-            _context = context;
-        }
+        public RecentProjectsApi(EreunaContext context) : base(context) { }
 
         /// <summary>
         /// Returns the two most recent projects (based on date they were last used)
         /// </summary>
         public IEnumerable<RecentProject> GetAllRecentProjects()
         {
-            var id = UserId;
-
-            var user = _context.Users.First(x => x.Id == id);
-            var projects = user
-                .Projects
+            var projects = _context.Projects.Where(x => x.User.Id == UserId)
                 .OrderByDescending(x => x.LastUsed)
                 .Take(2)
                 .Select(Map);
@@ -35,7 +26,7 @@ namespace Ereuna.Web.Endpoints
         }
         
 
-        private RecentProject Map(Project p)
+        private static RecentProject Map(Project p)
         {
             if (p == null) return null;
             return new RecentProject

@@ -13,14 +13,7 @@ namespace Ereuna.Web.Endpoints
     [TokenAuthorizationFilter]
     public class ProjectSummaryApi : SecureApiEndpoint
     {
-        private readonly EreunaContext _context;
-        private readonly ISessionProvider _sessionProvider;
-
-        public ProjectSummaryApi(EreunaContext context, ISessionProvider sessionProvider)
-        {
-            _context = context;
-            _sessionProvider = sessionProvider;
-        }
+        public ProjectSummaryApi(EreunaContext context) : base(context) { }
         
         public IEnumerable<ProjectSummary> GetAllProjects()
         {
@@ -31,11 +24,9 @@ namespace Ereuna.Web.Endpoints
             return projects;
         }
         
-        public IHttpActionResult GetProject(int projectId)
+        public IHttpActionResult Get(int projectId)
         {
-            var id = UserId;
-
-            var project = _context.Users.First(x => x.Id == id).Projects.FirstOrDefault(x => x.Id == projectId);
+            var project = GetProject(projectId);
 
             if (project == null) return NotFound();
             return Ok(Map(project));
@@ -46,10 +37,16 @@ namespace Ereuna.Web.Endpoints
             var ptid = (int)project.projectTypeId;
 
             var pt = _context.ProjectTypes.FirstOrDefault(x => x.Id == ptid);
-            var SessionUser = _sessionProvider.GetSessionUser();
-            var user = _context.Users.FirstOrDefault(x => x.Id == SessionUser.Id);
+            var user = _context.Users.FirstOrDefault(x => x.Id == UserId);
 
-            var p = new Project { Name = project.name, Description = project.description, ProjectType = pt, LastUsed = DateTime.Now, User = user };
+            var p = new Project
+            {
+                Name = project.name,
+                Description = project.description,
+                ProjectType = pt,
+                LastUsed = DateTime.Now,
+                User = user
+            };
             _context.Projects.Add(p);
             _context.SaveChanges();
 
@@ -60,7 +57,7 @@ namespace Ereuna.Web.Endpoints
         {
             if (string.IsNullOrEmpty(project.Name)) return BadRequest("Missing field: Project Name");
             
-            var dbProject = _context.Users.First(x => x.Id == UserId).Projects.FirstOrDefault(x => x.Id == project.Id);
+            var dbProject = GetProject(project.Id);
             if (dbProject == null) return NotFound();
 
             dbProject.Name = project.Name;

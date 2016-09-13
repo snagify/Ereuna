@@ -8,6 +8,7 @@ namespace Ereuna.Web.Data
         public virtual ProjectType ProjectType { get; set; }
         
         public virtual User User { get; set; }
+        //public int UserId { get; set; }
 
         public int Id { get; set; }
         public DateTime LastUsed { get; set; }
