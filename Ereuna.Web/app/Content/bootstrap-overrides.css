@@ -1,1 +1,13 @@
 ﻿/* This file is for styles that override bootstrap styles only */
+
+.modal .form-horizontal {
+    color: #222;
+}
+
+.modal .modal-title {
+    color: #222;
+}
+
+.list-group-item {
+    color: #222;
+}

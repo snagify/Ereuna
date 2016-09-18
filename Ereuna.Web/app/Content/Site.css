@@ -54,3 +54,10 @@ body {
     padding: 15px;
     height: 90%;
 }
+
+.SectionGroupBox {
+    background-color: #444;
+    border: 1px #666 solid;
+    border-radius: 10px;
+    padding: 5px;
+}

@@ -1,4 +1,4 @@
-﻿var app = angular.module('ereuna', ['ProjectTypesService', 'ngFacebook', 'ui.bootstrap', 'ui.router', 'ngRoute'])
+﻿var app = angular.module('ereuna', ['ProjectTypesService', 'ngFacebook', 'ui.bootstrap', 'ui.router', 'ngRoute', 'ui.sortable'])
     .config(['$facebookProvider', function ($facebookProvider) {
         $facebookProvider.setAppId('923459464377126').setPermissions(['email', 'public_profile']);
     }])

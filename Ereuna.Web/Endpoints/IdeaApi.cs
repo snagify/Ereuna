@@ -47,7 +47,35 @@ namespace Ereuna.Web.Endpoints
             project.Ideas.Add(dbIdea);
             _context.SaveChanges();
 
-            return Ok(dbIdea);
+            return Ok(Map(dbIdea));
+        }
+
+        public IHttpActionResult Put(Idea idea)
+        {
+            if (idea == null) return BadRequest("Need more information about the idea to update");
+
+            if (string.IsNullOrEmpty(idea.Title)) return BadRequest("Idea needs a Title");
+
+            var dbIdea = _context.Ideas.FirstOrDefault(x => x.Id == idea.Id);
+
+            dbIdea.Title = idea.Title;
+            dbIdea.Description = idea.Description;
+            dbIdea.Importance = idea.Importance;
+
+            _context.SaveChanges();
+
+            return Ok(Map(dbIdea));
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            if (id <= 0) return BadRequest("Need a valid Idea Id to delete");
+            
+            var dbIdea = _context.Ideas.FirstOrDefault(x => x.Id == id);
+            _context.Ideas.Remove(dbIdea);
+            _context.SaveChanges();
+
+            return Ok();
         }
 
         private static Idea Map(Data.Idea idea)
