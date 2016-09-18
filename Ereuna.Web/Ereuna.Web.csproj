@@ -120,14 +120,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\ngControllers\CharactersController.js" />
+    <Content Include="app\ngControllers\LocationsController.js" />
+    <Content Include="app\ngControllers\WorldController.js" />
+    <Content Include="app\ngControllers\EventsController.js" />
+    <Content Include="app\ngPartials\Characters.html" />
+    <Content Include="app\ngPartials\Locations.html" />
+    <Content Include="app\ngPartials\World.html" />
+    <Content Include="app\ngPartials\Events.html" />
+    <Content Include="projectmenu.html" />
     <Content Include="app\Content\bootstrap-overrides.css" />
     <Content Include="app\Content\Images\logo.png" />
     <Content Include="app\Content\Site.css" />
     <Content Include="app\ngControllers\AngularBootstrap.js" />
-    <Content Include="app\ngControllers\ProjectController.js" />
+    <Content Include="app\ngControllers\ProjectOverviewController.js" />
     <Content Include="app\ngControllers\HomeController.js" />
     <Content Include="app\ngControllers\AppController.js" />
-    <Content Include="app\ngPartials\Project.html" />
+    <Content Include="app\ngPartials\ProjectOverview.html" />
     <Content Include="app\ngPartials\Home.html" />
     <Content Include="App_Data\Ereuna.mdf" />
     <Content Include="App_Data\Ereuna_log.ldf">
@@ -325,11 +334,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\Scripts\" />
-    <Folder Include="home\APIs\" />
-    <Folder Include="home\Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

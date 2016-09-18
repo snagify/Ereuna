@@ -3,27 +3,7 @@
         $facebookProvider.setAppId('923459464377126').setPermissions(['email', 'public_profile']);
     }])
     .run(['$rootScope', '$window', '$state', '$stateParams', function ($rootScope, $window, $state, $stateParams) {
-        //$rootScope.userFullName = '';
-        //$rootScope.IsLoggedIn = false;
-        //$rootScope.LoginType = 'None';
-        //$rootScope.HasProjects = false;
-        //$rootScope.Projects = [];
 
-        //$rootScope.$state = $state;
-        //$rootScope.$stateParams = $stateParams;
-        
-
-        //(function (d, s, id) {
-        //    var js, fjs = d.getElementsByTagName(s)[0];
-        //    if (d.getElementById(id)) return;
-        //    js = d.createElement(s); js.id = id;
-        //    js.src = "//connect.facebook.net/en_US/sdk.js";
-        //    fjs.parentNode.insertBefore(js, fjs);
-        //}(document, 'script', 'facebook-jssdk'));
-
-        //$rootScope.$on('fb.load', function () {
-        //    $window.dispatchEvent(new Event('fb.load'));
-        //});
 
     }]);
 
@@ -37,12 +17,37 @@ function configRoutes($stateProvider, $urlRouterProvider) {
             controller: 'HomeController',
             controllerAs: 'vm'
         })
-        .state('project', {
-            url: '/:projectId',
-            templateUrl: 'app/ngPartials/Project.html',
-            controller: 'ProjectController',
-            controllerAs: 'vm'
-        })
+    .state('projectoverview', {
+        url: '/:projectId',
+        templateUrl: 'app/ngPartials/ProjectOverview.html',
+        controller: 'ProjectOverviewController',
+        controllerAs: 'vm'
+    })
+
+    .state('events', {
+        url: '/:projectId/events',
+        templateUrl: 'app/ngPartials/Events.html',
+        controller: 'EventsController',
+        controllerAs: 'vm'
+    })
+    .state('world', {
+        url: '/:projectId/world',
+        templateUrl: 'app/ngPartials/World.html',
+        controller: 'WorldController',
+        controllerAs: 'vm'
+    })
+    .state('locations', {
+        url: '/:projectId/locations',
+        templateUrl: 'app/ngPartials/Locations.html',
+        controller: 'LocationsController',
+        controllerAs: 'vm'
+    })
+    .state('characters', {
+        url: '/:projectId/characters',
+        templateUrl: 'app/ngPartials/Characters.html',
+        controller: 'CharactersController',
+        controllerAs: 'vm'
+    })
     ;
 
     $urlRouterProvider.otherwise('/');

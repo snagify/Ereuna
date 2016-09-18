@@ -1,5 +1,5 @@
 ﻿
-app.controller('ProjectController', function ($rootScope, $scope, $http, $facebook, $window, $location, $stateParams) {
+app.controller('ProjectOverviewController', function ($rootScope, $scope, $http, $facebook, $window, $location, $stateParams) {
     $scope.ProjectId = $stateParams.projectId;
     $scope.ProjectInformation = "";
     $scope.IsEditingProject = false;
