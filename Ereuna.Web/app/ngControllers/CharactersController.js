@@ -11,6 +11,12 @@ app.controller('CharactersController', function ($rootScope, $scope, $http, $sta
     $scope.NewCharacterSelectedType = { value: 1, name: 'Protagonist' };
     $scope.AddCharacter = doAddCharacter;
 
+    $scope.SelectedCharacterId = $stateParams.characterid;
+    $scope.IsSelectedCharacter = function(id) {
+        var result = $scope.SelectedCharacterId == id;
+        return result;
+    };
+
     doLoadCharacters();
 
     function doAddCharacter() {
@@ -33,15 +39,32 @@ app.controller('CharactersController', function ($rootScope, $scope, $http, $sta
     function doLoadCharacters() {
         $http.get('api/charactersummary?id=' + $scope.ProjectId)
             .success(function(data, status) {
+                $scope.allCharacters = data;
                 $scope.protaganists = data.filter(filterProtagonists);
                 $scope.antagonists = data.filter(filterAntagonists);
                 $scope.others = data.filter(filterOthers);
 
+                ExpandAccordianToSelectedCharacter();
             })
             .error(function(data, status, headers, config) {
 
             });
     };
+
+    function ExpandAccordianToSelectedCharacter() {
+        if ($scope.SelectedCharacterId > 0) {
+            var matches = $scope.allCharacters.filter(filterSelectedCharacter);
+            var character = matches[0];
+
+            if (character.TypeId === 1) $scope.characterAccordionStatus.isProtagonistsOpen = true;
+            if (character.TypeId === 2) $scope.characterAccordionStatus.isAntagonistsOpen = true;
+            if (character.TypeId === 3) $scope.characterAccordionStatus.isOthersOpen = true;
+        }
+    };
+
+    function filterSelectedCharacter(character) {
+        return character.Id == $scope.SelectedCharacterId;
+    }
 
     function filterProtagonists(character) {
         return character.TypeId === 1;

@@ -3,7 +3,7 @@
 <div class="ProjectBody">
     <div class="container-fluid">
 
-        <div class="col-lg-3 SectionGroupBox CharacterList">
+        <div class="col-lg-3 CharacterList">
             
             <uib-accordion close-others="true" class="Accordion">
                 <div uib-accordion-group is-open="characterAccordionStatus.isProtagonistsOpen">
@@ -11,7 +11,9 @@
                         <span class="badge">{{protaganists.length}}</span> Protagonists <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': characterAccordionStatus.isProtagonistsOpen, 'glyphicon-chevron-right': !characterAccordionStatus.isProtagonistsOpen}"></i>
                     </uib-accordion-heading>
 
-                    <a ng-repeat="character in protaganists" href="#/{{ProjectId}}/character/{{ character.Id }}" class="list-group-item">{{character.Name}}</a>
+                    <a ng-repeat="character in protaganists" href="#/{{ProjectId}}/character/{{ character.Id }}" 
+                       ng-class="{'list-group-item SelectedCharacter': IsSelectedCharacter(character.Id), 'list-group-item ': !IsSelectedCharacter(character.Id)}"
+                    >{{character.Name}}</a>
 
                 </div>
 
@@ -19,14 +21,16 @@
                     <uib-accordion-heading>
                         <span class="badge">{{antagonists.length}}</span> Antagonists <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': characterAccordionStatus.isAntagonistsOpen, 'glyphicon-chevron-right': !characterAccordionStatus.isAntagonistsOpen}"></i>
                     </uib-accordion-heading>
-                    <a ng-repeat="character in antagonists" href="#/{{ProjectId}}/character/{{ character.Id }}" class="list-group-item">{{character.Name}}</a>
+                    <a ng-repeat="character in antagonists" href="#/{{ProjectId}}/character/{{ character.Id }}" 
+                       ng-class="{'list-group-item SelectedCharacter': IsSelectedCharacter(character.Id), 'list-group-item ': !IsSelectedCharacter(character.Id)}">{{character.Name}}</a>
                 </div>
                 
                 <div uib-accordion-group is-open="characterAccordionStatus.isOthersOpen">
                     <uib-accordion-heading>
                         <span class="badge">{{others.length}}</span> Others <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': characterAccordionStatus.isOthersOpen, 'glyphicon-chevron-right': !characterAccordionStatus.isOthersOpen}"></i>
                     </uib-accordion-heading>
-                    <a ng-repeat="character in others" href="#/{{ProjectId}}/character/{{ character.Id }}" class="list-group-item">{{character.Name}}</a>
+                    <a ng-repeat="character in others" href="#/{{ProjectId}}/character/{{ character.Id }}" 
+                       ng-class="{'list-group-item SelectedCharacter': IsSelectedCharacter(character.Id), 'list-group-item ': !IsSelectedCharacter(character.Id)}">{{character.Name}}</a>
                 </div>
             </uib-accordion>
             

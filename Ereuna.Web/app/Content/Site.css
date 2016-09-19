@@ -93,6 +93,7 @@ body {
     padding-right: 10px;
 }
 
+
 .Accordion .panel {
     background-color: transparent;
     border: 0px;
@@ -111,10 +112,33 @@ body {
 .panel-group .panel-heading + .panel-collapse .panel-body {
     border-top: solid 1px #666;
     border-bottom: solid 1px #666;
+    padding-right: 0px;
+    margin-right: 0px;
 }
 
 .Accordion a:active, .Accordion a:hover, .Accordion a:link, .Accordion a:visited {
     text-decoration: none;
 }
+
+
+.Accordion .list-group-item.SelectedCharacter{
+    background-color: #555;
+    background: -webkit-linear-gradient(left, #333 , #777, #333); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #333, #777); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #333, #777); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #444, #666 , #333); /* Standard syntax */
+    
+
+
+    border: 0px;
+    color: #aaa;
+    padding-right: 0px;
+    margin-right: 0px;
+}
+
+.CharacterList {
+    padding: 0px;
+}
+
 
 
