@@ -93,3 +93,28 @@ body {
     padding-right: 10px;
 }
 
+.Accordion .panel {
+    background-color: transparent;
+    border: 0px;
+}
+
+.Accordion .panel-body {
+    border: 0px;
+}
+
+.Accordion .list-group-item {
+    background-color: transparent;
+    border: 0px;
+    color: #aaa;
+}
+
+.panel-group .panel-heading + .panel-collapse .panel-body {
+    border-top: solid 1px #666;
+    border-bottom: solid 1px #666;
+}
+
+.Accordion a:active, .Accordion a:hover, .Accordion a:link, .Accordion a:visited {
+    text-decoration: none;
+}
+
+

@@ -19,5 +19,9 @@ namespace Ereuna.Web.Data
         public DbSet<Project> Projects { get; set; }
 
         public DbSet<Idea> Ideas { get; set; }
+
+        public DbSet<Character> Characters{ get; set; }
+
+        public DbSet<CharacterType> CharacterTypes { get; set; }
     }
 }

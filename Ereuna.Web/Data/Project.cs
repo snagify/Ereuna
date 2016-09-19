@@ -17,5 +17,6 @@ namespace Ereuna.Web.Data
 
 
         public virtual List<Idea> Ideas { get; set; }
+        public virtual List<Character> Characters { get; set; }
     }
 }

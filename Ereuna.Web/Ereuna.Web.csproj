@@ -128,6 +128,7 @@
     <Content Include="app\ngPartials\Locations.html" />
     <Content Include="app\ngPartials\World.html" />
     <Content Include="app\ngPartials\Events.html" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="projectmenu.html" />
     <Content Include="app\Content\bootstrap-overrides.css" />
     <Content Include="app\Content\Images\logo.png" />
@@ -205,7 +206,6 @@
     <Content Include="home\Content\Images\write-sized.png" />
     <Content Include="Content\Images\write.PNG" />
     <Content Include="home\Content\Site.css" />
-    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -283,9 +283,12 @@
     <Compile Include="Common\Session\ISessionValidator.cs" />
     <Compile Include="Common\Session\StandardSessionProvider.cs" />
     <Compile Include="Common\Session\TokenAuthorizationFilterAttribute.cs" />
+    <Compile Include="Data\Character.cs" />
+    <Compile Include="Data\CharacterType.cs" />
     <Compile Include="Data\Idea.cs" />
     <Compile Include="Data\Project.cs" />
     <Compile Include="Data\ProjectType.cs" />
+    <Compile Include="Endpoints\CharacterSummaryApi.cs" />
     <Compile Include="Endpoints\IdeaApi.cs" />
     <Compile Include="Endpoints\ActivityApi.cs" />
     <Compile Include="Endpoints\LoginApi.cs" />
@@ -303,6 +306,10 @@
     <Compile Include="Migrations\201506140721341_Initial.cs" />
     <Compile Include="Migrations\201506140721341_Initial.Designer.cs">
       <DependentUpon>201506140721341_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609180756520_Characters.cs" />
+    <Compile Include="Migrations\201609180756520_Characters.Designer.cs">
+      <DependentUpon>201609180756520_Characters.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -329,6 +336,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201506140721341_Initial.resx">
       <DependentUpon>201506140721341_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609180756520_Characters.resx">
+      <DependentUpon>201609180756520_Characters.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

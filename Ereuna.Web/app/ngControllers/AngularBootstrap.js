@@ -48,6 +48,12 @@ function configRoutes($stateProvider, $urlRouterProvider) {
         controller: 'CharactersController',
         controllerAs: 'vm'
     })
+    .state('character', {
+        url: '/:projectId/character/:characterid',
+        templateUrl: 'app/ngPartials/Characters.html',
+        controller: 'CharactersController',
+        controllerAs: 'vm'
+    })
     ;
 
     $urlRouterProvider.otherwise('/');

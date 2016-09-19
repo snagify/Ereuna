@@ -43,6 +43,14 @@ namespace Ereuna.Web.Migrations
             };
             context.ProjectTypes.AddOrUpdate(projectTypes.ToArray());
 
+            var characterTypes = new List<CharacterType>
+            {
+                new CharacterType { Id = CharacterType.Protagonist, Name = "Protagonist" },
+                new CharacterType { Id = CharacterType.Antagonist, Name = "Antagonist" },
+                new CharacterType { Id = CharacterType.Other, Name = "Other" }
+            };
+            context.CharacterTypes.AddOrUpdate(characterTypes.ToArray());
+
 
             context.SaveChanges();
         }
