@@ -66,7 +66,7 @@
                         <li><a href="#">Manage my account</a></li>
                         <li><a href="#">View activity</a></li>
                         <li><a href="#">Check the news</a></li>
-                        <li><a href="app.html">Load the app</a></li>
+                        <li><a href="/app.html">Load the app</a></li>
                     </ul>
                     
                     Projects:
@@ -81,7 +81,7 @@
                         <li ng-repeat="project in Projects">
                             {{ project.ProjectType}} :: {{ project.Name }} 
                             | <a href="#/projectsummary/{{ project.ProjectId }}">View summary</a> 
-                            | <a href="#/projectsummary/{{ project.ProjectId }}">Continue working</a> 
+                            | <a href="/app.html#/{{ project.ProjectId }}">Continue working</a> 
                         </li>
                     </ul>
 

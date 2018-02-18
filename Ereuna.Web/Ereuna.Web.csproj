@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\ngControllers\CharacterController.js" />
     <Content Include="app\ngControllers\CharactersController.js" />
     <Content Include="app\ngControllers\LocationsController.js" />
     <Content Include="app\ngControllers\WorldController.js" />
@@ -288,6 +289,7 @@
     <Compile Include="Data\Idea.cs" />
     <Compile Include="Data\Project.cs" />
     <Compile Include="Data\ProjectType.cs" />
+    <Compile Include="Endpoints\CharacterDetailApi.cs" />
     <Compile Include="Endpoints\CharacterSummaryApi.cs" />
     <Compile Include="Endpoints\IdeaApi.cs" />
     <Compile Include="Endpoints\ActivityApi.cs" />

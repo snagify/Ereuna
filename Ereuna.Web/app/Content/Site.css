@@ -140,5 +140,15 @@ body {
     padding: 0px;
 }
 
+.Character img {
+    width: 100px;
+    height: 200px;
+}
 
+.glyphicon.larger {
+    font-size: 30px;
+}
 
+.CharacterNameEdit {
+    padding-bottom: 20px;
+}

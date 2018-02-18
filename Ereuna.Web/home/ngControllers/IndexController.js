@@ -47,7 +47,7 @@ app.controller('IndexController', function ($rootScope, $scope, $http, $facebook
             $window.sessionStorage.token = data.SessionToken;
 
             $rootScope.UserId = data.User.UserId;
-
+            $rootScope.IsLoggedIn = true;
 
             $http({
                 method: 'GET',
@@ -78,8 +78,8 @@ app.controller('IndexController', function ($rootScope, $scope, $http, $facebook
     }
     
     $scope.$on('fb.auth.authResponseChange', function () {
-        $rootScope.IsLoggedIn = $facebook.isConnected();
-        if ($rootScope.IsLoggedIn) {
+        $rootScope.IsFBLoggedIn = $facebook.isConnected();
+        if ($rootScope.IsFBLoggedIn) {
             $rootScope.LoginType = 'FB';
 
             $facebook.api('/me').then(function (user) {
@@ -93,14 +93,12 @@ app.controller('IndexController', function ($rootScope, $scope, $http, $facebook
     $scope.$on('fb.load', function () {
         $scope.loading = false;
     });
-
-
+    
     function GetStyleClassForGlassMenu(menutarget) {
         var current = $location.path().substr(1, menutarget.length+1);
         var style = (current === menutarget) ? 'glass redglass' : 'glass blackglass';
         return style;
     }
-
 
     $scope.LoginMenuClass = "glass blackglass";
     $scope.HomeMenuClass = "glass blackglass";
@@ -109,7 +107,5 @@ app.controller('IndexController', function ($rootScope, $scope, $http, $facebook
         $scope.LoginMenuClass = GetStyleClassForGlassMenu('login');
         $scope.HomeMenuClass = GetStyleClassForGlassMenu('');
     });
-
-
 
 });

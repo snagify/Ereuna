@@ -16,6 +16,9 @@ app.controller('CharactersController', function ($rootScope, $scope, $http, $sta
         var result = $scope.SelectedCharacterId == id;
         return result;
     };
+    $scope.IsCharacterSelected = function() {
+        return ($scope.SelectedCharacterId > 0);
+    };
 
     doLoadCharacters();
 

@@ -4,16 +4,15 @@
     <div class="container-fluid">
 
         <div class="col-lg-3 CharacterList">
-            
+
             <uib-accordion close-others="true" class="Accordion">
                 <div uib-accordion-group is-open="characterAccordionStatus.isProtagonistsOpen">
                     <uib-accordion-heading>
                         <span class="badge">{{protaganists.length}}</span> Protagonists <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': characterAccordionStatus.isProtagonistsOpen, 'glyphicon-chevron-right': !characterAccordionStatus.isProtagonistsOpen}"></i>
                     </uib-accordion-heading>
 
-                    <a ng-repeat="character in protaganists" href="#/{{ProjectId}}/character/{{ character.Id }}" 
-                       ng-class="{'list-group-item SelectedCharacter': IsSelectedCharacter(character.Id), 'list-group-item ': !IsSelectedCharacter(character.Id)}"
-                    >{{character.Name}}</a>
+                    <a ng-repeat="character in protaganists" href="#/{{ProjectId}}/character/{{ character.Id }}"
+                       ng-class="{'list-group-item SelectedCharacter': IsSelectedCharacter(character.Id), 'list-group-item ': !IsSelectedCharacter(character.Id)}">{{character.Name}}</a>
 
                 </div>
 
@@ -21,32 +20,67 @@
                     <uib-accordion-heading>
                         <span class="badge">{{antagonists.length}}</span> Antagonists <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': characterAccordionStatus.isAntagonistsOpen, 'glyphicon-chevron-right': !characterAccordionStatus.isAntagonistsOpen}"></i>
                     </uib-accordion-heading>
-                    <a ng-repeat="character in antagonists" href="#/{{ProjectId}}/character/{{ character.Id }}" 
+                    <a ng-repeat="character in antagonists" href="#/{{ProjectId}}/character/{{ character.Id }}"
                        ng-class="{'list-group-item SelectedCharacter': IsSelectedCharacter(character.Id), 'list-group-item ': !IsSelectedCharacter(character.Id)}">{{character.Name}}</a>
                 </div>
-                
+
                 <div uib-accordion-group is-open="characterAccordionStatus.isOthersOpen">
                     <uib-accordion-heading>
                         <span class="badge">{{others.length}}</span> Others <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': characterAccordionStatus.isOthersOpen, 'glyphicon-chevron-right': !characterAccordionStatus.isOthersOpen}"></i>
                     </uib-accordion-heading>
-                    <a ng-repeat="character in others" href="#/{{ProjectId}}/character/{{ character.Id }}" 
+                    <a ng-repeat="character in others" href="#/{{ProjectId}}/character/{{ character.Id }}"
                        ng-class="{'list-group-item SelectedCharacter': IsSelectedCharacter(character.Id), 'list-group-item ': !IsSelectedCharacter(character.Id)}">{{character.Name}}</a>
                 </div>
             </uib-accordion>
-            
+
             <div>
                 <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#NewCharacterModal"><span class="glyphicon glyphicon-plus"></span> Add</button>
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-9" ng-show="IsCharacterSelected()">
+
+            <div class="container-fluid Character" ng-controller="CharacterController">
+                <div class="col-lg-4">
+
+
+
+                </div>
+                <div class="col-lg-8 container-fluid">
+
+                    <h2 ng-show="!IsEditingName">{{Character.Name}} <a ng-click="StartEditingName()"><span class="glyphicon glyphicon-edit"></span></a></h2>
+
+                    <div class="CharacterNameEdit row-fluid" ng-show="IsEditingName">
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" ng-model="EditingName" />
+                        </div>
+
+                        <div class="col-lg-3">
+                            <span class="glyphicon glyphicon-ok-sign larger" ng-click="SaveName()"></span>
+                            <span class="glyphicon glyphicon-remove-sign larger" ng-click="CancelName()"></span>
+                        </div>
+                        <h3>&nbsp;</h3>
+                    </div>
+
+                    <div class="row-fluid" ng-show="!IsEditingDescription">
+                        <p>{{Character.Description}}</p>
+                        <p><a ng-click="StartEditingDescription()"><span class="glyphicon glyphicon-edit"></span></a></p>
+                    </div>
+
+                    <form class="form" ng-show="IsEditingDescription">
+                        <label class="control-label" for="currentCharacterDescription">Description</label>
+                        <div>
+                            <textarea class="form-control" rows="5" id="currentCharacterDescription" ng-model="EditingDescription"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <span class="glyphicon glyphicon-ok-sign larger" ng-click="SaveDescription()"></span>
+                            <span class="glyphicon glyphicon-remove-sign larger" ng-click="CancelDescription()"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
         </div>
-
-        <div class="col-lg-6">
-
-        </div>
-
     </div>
 
 
